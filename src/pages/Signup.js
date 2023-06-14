@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./signup.module.css";
 import { regexCheck } from "../Common/Utility";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     firstName: {
       value: "",
@@ -21,13 +23,17 @@ const Signup = () => {
       value: "",
       error: "",
     },
+    confirmPassword: {
+      value: "",
+      error: "",
+    },
   });
+
   const [passwordType, setPasswordType] = useState("password");
 
   const errorCheck = (fieldName, value) => {
     if (fieldName === "firstName") {
       if (value === "") {
-        console.log("hey");
         setFormValues((formValues) => ({
           ...formValues,
           firstName: {
@@ -112,31 +118,75 @@ const Signup = () => {
         }));
       }
     }
+    if (fieldName === "confirmPassword") {
+      if (value === "") {
+        setFormValues((formValues) => ({
+          ...formValues,
+          confirmPassword: {
+            ...formValues.confirmPassword,
+            error: "Field cannot be empty",
+          },
+        }));
+      } else {
+        setFormValues((formValues) => {
+          return formValues.confirmPassword.value !== formValues.password.value
+            ? {
+                ...formValues,
+                confirmPassword: {
+                  ...formValues.confirmPassword,
+                  error: "Password and confirm passwords do not match",
+                },
+              }
+            : {
+                ...formValues,
+                confirmPassword: {
+                  ...formValues.confirmPassword,
+                  error: "",
+                },
+              };
+        });
+      }
+    }
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    errorCheck("firstName", formValues.firstName.value);
-    errorCheck("lastName", formValues.lastName.value);
-    errorCheck("password", formValues.password.value);
-    errorCheck("email", formValues.email.value);
-
     let validationError = false;
+    const { firstName, lastName, email, password, confirmPassword } =
+      formValues;
 
-    for (const key in formValues) {
-      if (formValues[key].error !== "") {
-        validationError = true;
-        break;
+    errorCheck("firstName", firstName.value);
+    errorCheck("lastName", lastName.value);
+    errorCheck("email", email.value);
+    errorCheck("password", password.value);
+    errorCheck("confirmPassword", confirmPassword.value);
+
+    validationError =
+      firstName.value === "" ||
+      lastName.value === "" ||
+      email.value === "" ||
+      password.value === "" ||
+      confirmPassword.value === ""
+        ? true
+        : false;
+
+    const errorFor = (validationError) => {
+      for (const key in formValues) {
+        if (formValues[key].error !== "") {
+          validationError = true;
+          break;
+        }
       }
-    }
-
-    if (!validationError) {
+      return validationError;
+    };
+    if (!errorFor(validationError)) {
       const data = {
-        firstName: "hrushi",
-        lastName: "Tawde",
-        email: "hdtawde@gmail.com",
-        password: "12345",
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
       };
+
       const url = "/api/auth/signup";
       const config = {
         method: "POST",
@@ -146,11 +196,18 @@ const Signup = () => {
         },
         body: JSON.stringify(data),
       };
+
       try {
         const response = await fetch(url, config);
         const data = await response.json();
+        const { errors, encodedToken } = data;
         console.log(data);
-        localStorage.setItem("token", data.encodedToken);
+        if (!errors) {
+          localStorage.setItem("token", encodedToken);
+          navigate("/login");
+        } else {
+          alert("User already exists");
+        }
       } catch (error) {
       } finally {
       }
@@ -250,6 +307,30 @@ const Signup = () => {
               Show Password
             </label>
           </div>
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            className={`${styles.password} ${
+              formValues.confirmPassword.error !== "" && styles.error
+            }`}
+            id="confirmPassword"
+            name="confirmPassword"
+            onChange={(e) => {
+              setFormValues((formValues) => ({
+                ...formValues,
+                confirmPassword: {
+                  ...formValues.confirmPassword,
+                  value: e.target.value,
+                },
+              }));
+              errorCheck("confirmPassword", e.target.value);
+            }}
+          />
+          {formValues.confirmPassword.error !== "" && (
+            <span className={styles.warning}>
+              {formValues.confirmPassword.error}
+            </span>
+          )}
           <button type="submit">Sign up</button>
         </form>
       </div>
