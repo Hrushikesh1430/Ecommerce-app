@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "..";
 
 import styles from "./login.module.css";
 import { regexCheck } from "../Common/Utility";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { isloggedIn, setUserToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    isloggedIn && navigate("/");
+  }, []);
+
   const [formValues, setFormValues] = useState({
     email: {
       value: "",
@@ -107,9 +116,10 @@ const Login = () => {
         const response = await fetch(url, config);
         const data = await response.json();
         const { errors, encodedToken } = data;
-        console.log(data);
+
         if (!errors) {
-          localStorage.setItem("token", encodedToken);
+          localStorage.setItem("userToken", encodedToken);
+          setUserToken(encodedToken);
           navigate("/");
         } else {
           setFormValues((formValues) => ({
@@ -129,7 +139,7 @@ const Login = () => {
     <div className={styles.login}>
       <form onSubmit={submitLoginHandler}>
         <h3>Login</h3>
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           className={`${styles.email} ${
@@ -148,7 +158,7 @@ const Login = () => {
         {formValues.email.error !== "" && (
           <span className={styles.warning}>{formValues.email.error}</span>
         )}
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type={"password"}
           className={`${styles.password} ${

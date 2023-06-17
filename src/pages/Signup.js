@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import styles from "./signup.module.css";
+import { AuthContext } from "..";
 import { regexCheck } from "../Common/Utility";
+
+import styles from "./signup.module.css";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [formValues, setFormValues] = useState({
+  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
+
+  useEffect(() => {
+    isloggedIn && navigate("/");
+  }, []);
+
+  const intitalValues = {
     firstName: {
       value: "",
       error: "",
@@ -27,7 +35,9 @@ const Signup = () => {
       value: "",
       error: "",
     },
-  });
+  };
+
+  const [formValues, setFormValues] = useState(intitalValues);
 
   const [passwordType, setPasswordType] = useState("password");
 
@@ -155,6 +165,16 @@ const Signup = () => {
     const { firstName, lastName, email, password, confirmPassword } =
       formValues;
 
+    const errorFor = (validationError) => {
+      for (const key in formValues) {
+        if (formValues[key].error !== "") {
+          validationError = true;
+          break;
+        }
+      }
+      return validationError;
+    };
+
     errorCheck("firstName", firstName.value);
     errorCheck("lastName", lastName.value);
     errorCheck("email", email.value);
@@ -170,16 +190,9 @@ const Signup = () => {
         ? true
         : false;
 
-    const errorFor = (validationError) => {
-      for (const key in formValues) {
-        if (formValues[key].error !== "") {
-          validationError = true;
-          break;
-        }
-      }
-      return validationError;
-    };
-    if (!errorFor(validationError)) {
+    !validationError && errorFor(validationError);
+
+    if (!validationError) {
       const data = {
         firstName: firstName.value,
         lastName: lastName.value,
@@ -200,10 +213,10 @@ const Signup = () => {
       try {
         const response = await fetch(url, config);
         const data = await response.json();
-        const { errors, encodedToken } = data;
+        const { errors } = data;
         console.log(data);
         if (!errors) {
-          localStorage.setItem("token", encodedToken);
+          // localStorage.setItem("userToken", encodedToken);
           navigate("/login");
         } else {
           alert("User already exists");
@@ -218,7 +231,7 @@ const Signup = () => {
       <div className={styles.signup}>
         <form onSubmit={submitHandler}>
           <h3>Signup</h3>
-          <label for="firstName">First Name</label>
+          <label htmlFor="firstName">First Name</label>
           <input
             type="text"
             className={`${styles.firstName} ${
@@ -237,7 +250,7 @@ const Signup = () => {
           {formValues.firstName.error !== "" && (
             <span className={styles.warning}>{formValues.firstName.error}</span>
           )}
-          <label for="lastName">Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
             className={`${styles.lastName} ${
@@ -256,7 +269,7 @@ const Signup = () => {
           {formValues.lastName.error !== "" && (
             <span className={styles.warning}>{formValues.lastName.error}</span>
           )}
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             className={`${styles.email} ${
@@ -275,7 +288,7 @@ const Signup = () => {
           {formValues.email.error !== "" && (
             <span className={styles.warning}>{formValues.email.error}</span>
           )}
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type={passwordType}
             className={`${styles.password} ${
@@ -303,11 +316,11 @@ const Signup = () => {
                   : setPasswordType("password")
               }
             />
-            <label for="showPassword" className={styles.showPasswordLabel}>
+            <label htmlFor="showPassword" className={styles.showPasswordLabel}>
               Show Password
             </label>
           </div>
-          <label for="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
             className={`${styles.password} ${
@@ -332,6 +345,10 @@ const Signup = () => {
             </span>
           )}
           <button type="submit">Sign up</button>
+          <span className={styles.registered}>Already a registered user?</span>
+          <p className={styles.loginText} onClick={() => navigate("/login")}>
+            Sign in
+          </p>
         </form>
       </div>
     </>

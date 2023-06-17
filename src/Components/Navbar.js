@@ -1,0 +1,37 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { AuthContext } from "..";
+const Navbar = () => {
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext);
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <span className="brand">Meri Dukan</span>
+          </li>
+        </ul>
+
+        <div className="loginNavWrapper">
+          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+          <Link to="/products">Products</Link>
+          <button
+            onClick={() => {
+              localStorage.removeItem("userToken");
+              setIsLoggedIn(false);
+              navigate("/login");
+            }}
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;

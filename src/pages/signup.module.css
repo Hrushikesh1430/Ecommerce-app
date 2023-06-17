@@ -59,3 +59,15 @@
 .signup .showPasswordLabel {
   display: inline;
 }
+.registered {
+  text-align: center;
+}
+.signup .loginText {
+  display: inline;
+  text-align: center;
+  color: blue;
+}
+.signup .loginText:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

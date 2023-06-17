@@ -5,6 +5,9 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
+import { AuthContextProvider, AuthContext } from "./Context/AuthContext";
+
+export { AuthContext };
 
 // Call make Server
 makeServer();
@@ -14,7 +17,9 @@ const container = document.getElementById("root");
 const Main = () => (
   <Router>
     <React.StrictMode>
-      <App />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </React.StrictMode>
   </Router>
 );

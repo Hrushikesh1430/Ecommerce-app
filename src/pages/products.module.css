@@ -1,0 +1,43 @@
+/* .productParent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+.productContainer {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+.productCard {
+  border: 2px solid black;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 2vw;
+  align-items: center;
+}
+.productCard img {
+  width: 250px;
+  aspect-ratio: 2/3;
+}
+.productTitle {
+  text-align: center;
+  padding: 2vw;
+  font-size: 30px;
+}
+.name {
+  margin-top: 10px;
+}
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.addWishList {
+  background-color: #28a745;
+  border-color: #28a745;
+}
