@@ -6,8 +6,9 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthContextProvider, AuthContext } from "./Context/AuthContext";
+import { CartContext, CartContextProvider } from "./Context/CartContext";
 
-export { AuthContext };
+export { AuthContext, CartContext };
 
 // Call make Server
 makeServer();
@@ -17,9 +18,11 @@ const container = document.getElementById("root");
 const Main = () => (
   <Router>
     <React.StrictMode>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
+      <CartContextProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </CartContextProvider>
     </React.StrictMode>
   </Router>
 );
