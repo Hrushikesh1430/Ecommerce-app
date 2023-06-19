@@ -1,14 +1,20 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import "./index.css";
 import App from "./App";
+
 import { makeServer } from "./server";
-import { BrowserRouter as Router } from "react-router-dom";
+
 import { AuthContextProvider, AuthContext } from "./Context/AuthContext";
 import { CartContext, CartContextProvider } from "./Context/CartContext";
+import {
+  WishListContext,
+  WishListContextProvider,
+} from "./Context/WishListContext";
 
-export { AuthContext, CartContext };
+export { AuthContext, CartContext, WishListContext };
 
 // Call make Server
 makeServer();
@@ -18,11 +24,13 @@ const container = document.getElementById("root");
 const Main = () => (
   <Router>
     <React.StrictMode>
-      <CartContextProvider>
-        <AuthContextProvider>
-          <App />
-        </AuthContextProvider>
-      </CartContextProvider>
+      <AuthContextProvider>
+        <WishListContextProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </WishListContextProvider>
+      </AuthContextProvider>
     </React.StrictMode>
   </Router>
 );

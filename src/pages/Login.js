@@ -1,15 +1,18 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from "..";
+import { AuthContext, CartContext, WishListContext } from "..";
 
 import styles from "./login.module.css";
 import { regexCheck } from "../Common/Utility";
+import Navbar from "../Components/Navbar";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const { isloggedIn, setUserToken } = useContext(AuthContext);
+  const { isloggedIn, setUserToken, setIsLoggedIn } = useContext(AuthContext);
+  const { getWishListAPI } = useContext(WishListContext);
+  const { getCartItemsAPI } = useContext(CartContext);
 
   useEffect(() => {
     isloggedIn && navigate("/");
@@ -120,6 +123,10 @@ const Login = () => {
         if (!errors) {
           localStorage.setItem("userToken", encodedToken);
           setUserToken(encodedToken);
+          setIsLoggedIn(true);
+          getWishListAPI(encodedToken);
+          getCartItemsAPI(encodedToken);
+
           navigate("/");
         } else {
           setFormValues((formValues) => ({
@@ -136,54 +143,57 @@ const Login = () => {
     }
   };
   return (
-    <div className={styles.login}>
-      <form onSubmit={submitLoginHandler}>
-        <h3>Login</h3>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          className={`${styles.email} ${
-            formValues.email.error !== "" && styles.error
-          }`}
-          id="signupemail"
-          name="email"
-          onChange={(e) => {
-            setFormValues((formValues) => ({
-              ...formValues,
-              email: { ...formValues.email, value: e.target.value },
-            }));
-            errorCheck("email", e.target.value);
-          }}
-        />
-        {formValues.email.error !== "" && (
-          <span className={styles.warning}>{formValues.email.error}</span>
-        )}
-        <label htmlFor="password">Password</label>
-        <input
-          type={"password"}
-          className={`${styles.password} ${
-            formValues.password.error !== "" && styles.error
-          }`}
-          id="signupassword"
-          name="password"
-          onChange={(e) => {
-            setFormValues((formValues) => ({
-              ...formValues,
-              password: { ...formValues.password, value: e.target.value },
-            }));
-            errorCheck("password", e.target.value);
-          }}
-        />
-        {formValues.password.error !== "" && (
-          <span className={styles.warning}>{formValues.password.error}</span>
-        )}
-        <button type="submit">Sign in</button>
-        <span>Dont't have an account?</span>
-        <p className={styles.signupText} onClick={() => navigate("/signup")}>
-          Signup
-        </p>
-      </form>
-    </div>
+    <>
+      <Navbar />
+      <div className={styles.login}>
+        <form onSubmit={submitLoginHandler}>
+          <h3>Login</h3>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            className={`${styles.email} ${
+              formValues.email.error !== "" && styles.error
+            }`}
+            id="signupemail"
+            name="email"
+            onChange={(e) => {
+              setFormValues((formValues) => ({
+                ...formValues,
+                email: { ...formValues.email, value: e.target.value },
+              }));
+              errorCheck("email", e.target.value);
+            }}
+          />
+          {formValues.email.error !== "" && (
+            <span className={styles.warning}>{formValues.email.error}</span>
+          )}
+          <label htmlFor="password">Password</label>
+          <input
+            type={"password"}
+            className={`${styles.password} ${
+              formValues.password.error !== "" && styles.error
+            }`}
+            id="signupassword"
+            name="password"
+            onChange={(e) => {
+              setFormValues((formValues) => ({
+                ...formValues,
+                password: { ...formValues.password, value: e.target.value },
+              }));
+              errorCheck("password", e.target.value);
+            }}
+          />
+          {formValues.password.error !== "" && (
+            <span className={styles.warning}>{formValues.password.error}</span>
+          )}
+          <button type="submit">Sign in</button>
+          <span>Dont't have an account?</span>
+          <p className={styles.signupText} onClick={() => navigate("/signup")}>
+            Signup
+          </p>
+        </form>
+      </div>
+    </>
   );
 };
 

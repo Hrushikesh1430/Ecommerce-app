@@ -19,6 +19,8 @@ const Navbar = () => {
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
           <Link to="/products">Products</Link>
+          <Link to="/wishlist">Wishlist</Link>
+          <Link to="/cart">Cart</Link>
           <button
             onClick={() => {
               localStorage.removeItem("userToken");

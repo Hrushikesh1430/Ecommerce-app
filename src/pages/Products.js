@@ -6,66 +6,34 @@ import styles from "./products.module.css";
 import Navbar from "../Components/Navbar";
 import AllenSolly from "../assets/men/Allen_Solly_Jacket.jpg";
 
-import { AuthContext, CartContext } from "..";
+import { AuthContext, CartContext, WishListContext } from "..";
+import { addItemToCartHandler } from "../backend/controllers/CartController";
 
 const Products = () => {
   const navigate = useNavigate();
 
+  // usertoken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2JmZmU0Yy1mYjUwLTQ2NjEtOTZmOC01YWEwOTNjNDE0YTEiLCJlbWFpbCI6ImhkdGF3ZGVAZ21haWwuY29tIn0.lHuCh3AbbV5_HUP771IKdyUognhckf4dleARPrd4RA4
+
   const [products, setProducts] = useState([]);
+
   const { userToken } = useContext(AuthContext);
 
-  const { state, dispatch } = useContext(CartContext);
+  const { wishList, addToWishList } = useContext(WishListContext);
+
+  const { cart, addCartHandler } = useContext(CartContext);
 
   const getProducts = async () => {
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
       setProducts(data.products);
-      //   setProducts(data.categories);
     } catch (e) {}
-  };
-
-  const getCartItemsAPI = async () => {
-    const url = "/api/user/cart";
-    const config = {
-      method: "GET",
-      headers: {
-        authorization: userToken,
-      },
-    };
-    try {
-      const response = await fetch(url, config);
-      const data = await response.json();
-      console.log(data);
-      //   setProducts(data.categories);
-    } catch (e) {}
-  };
-
-  const addCartAPI = async (product) => {
-    const url = "/api/user/cart";
-    const config = {
-      method: "POST",
-      headers: {
-        authorization: userToken,
-      },
-      body: JSON.stringify(product),
-    };
-    try {
-      const response = await fetch(url, config);
-      const data = await response.json();
-      dispatch({ type: "ADD_ITEM", payLoad: product });
-    } catch (e) {}
-  };
-
-  console.log("cartiTEMS", state.cart);
-  const addCartHandler = (product) => {
-    userToken ? addCartAPI(product) : navigate("/login");
-    getCartItemsAPI();
   };
 
   useEffect(() => {
     getProducts();
   }, []);
+
   return (
     <>
       <Navbar />
@@ -78,13 +46,38 @@ const Products = () => {
               <p>{item.brand}</p>
               <p className={styles.name}>{item.name}</p>
               <div className={styles.buttonContainer}>
-                <button
-                  className={styles.addCart}
-                  onClick={() => addCartHandler(item)}
-                >
-                  Add to Cart
-                </button>
-                <button className={styles.addWishList}>Add to WishList</button>
+                {cart.find((cartItem) => cartItem._id === item._id) ? (
+                  <button
+                    className={styles.addWishList}
+                    onClick={() => navigate("/cart")}
+                  >
+                    Go to Cart
+                  </button>
+                ) : (
+                  <button
+                    className={styles.addWishList}
+                    onClick={() => addCartHandler(item)}
+                  >
+                    Add to Cart
+                  </button>
+                )}
+                {wishList.find(
+                  (wishListItem) => wishListItem._id === item._id
+                ) ? (
+                  <button
+                    className={styles.addWishList}
+                    onClick={() => navigate("/wishlist")}
+                  >
+                    Go to WishList
+                  </button>
+                ) : (
+                  <button
+                    className={styles.addWishList}
+                    onClick={() => addToWishList(item)}
+                  >
+                    Add to WishList
+                  </button>
+                )}
               </div>
             </div>
           ))}
