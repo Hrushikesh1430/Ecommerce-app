@@ -30,8 +30,6 @@ const Products = () => {
     } catch (e) {}
   };
 
-  console.log("in products");
-
   useEffect(() => {
     getProducts();
   }, []);

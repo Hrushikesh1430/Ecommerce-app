@@ -1,36 +1,3 @@
-.userDetailsContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.userInfo {
-  padding: 20px;
-  padding-top: 10px;
-}
-.addressContainer {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-.addressContainer h3 {
-  text-align: center;
-}
-.userInfoContainer {
-  display: flex;
-  flex-direction: column;
-}
-.address {
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-  gap: 10px;
-}
-.addAddress {
-  margin-top: 10px;
-}
-
-/* form styles */
 .addressForm {
   display: grid;
   place-items: center;
