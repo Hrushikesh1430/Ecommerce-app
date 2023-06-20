@@ -10,12 +10,15 @@ import Navbar from "../Components/Navbar";
 const Login = () => {
   const navigate = useNavigate();
 
-  const { isloggedIn, setUserToken, setIsLoggedIn } = useContext(AuthContext);
+  const { isloggedIn, setUserToken, setIsLoggedIn, checkLogin, setUser } =
+    useContext(AuthContext);
   const { getWishListAPI } = useContext(WishListContext);
   const { getCartItemsAPI } = useContext(CartContext);
 
+  // Function to Redirect to userdetails if logged in
+
   useEffect(() => {
-    isloggedIn && navigate("/");
+    checkLogin();
   }, []);
 
   const [formValues, setFormValues] = useState({
@@ -118,16 +121,17 @@ const Login = () => {
       try {
         const response = await fetch(url, config);
         const data = await response.json();
-        const { errors, encodedToken } = data;
+        const { errors, encodedToken, foundUser } = data;
 
         if (!errors) {
           localStorage.setItem("userToken", encodedToken);
+          localStorage.setItem("loggedUser", JSON.stringify(foundUser));
           setUserToken(encodedToken);
           setIsLoggedIn(true);
+          setUser(foundUser);
           getWishListAPI(encodedToken);
           getCartItemsAPI(encodedToken);
-
-          navigate("/");
+          navigate("/products");
         } else {
           setFormValues((formValues) => ({
             ...formValues,

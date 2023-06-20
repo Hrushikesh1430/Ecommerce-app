@@ -59,7 +59,7 @@ const WishList = () => {
                     <div className={styles.quantityContainer}>
                       <button
                         onClick={(e) => {
-                          quantityHandler(item._id, "increment");
+                          quantityHandler(item._id, "increment", item.qty);
                         }}
                       >
                         +
@@ -103,6 +103,7 @@ const WishList = () => {
                   <span>{totalCartAmount}</span>
                 </div>
               </div>
+              <button className={styles.checkout}>Checkout</button>
             </div>
           </div>
         ) : (

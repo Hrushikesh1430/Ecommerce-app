@@ -13,8 +13,9 @@ import {
   WishListContext,
   WishListContextProvider,
 } from "./Context/WishListContext";
+import { DataContext, DataContextProvider } from "./Context/DataContext";
 
-export { AuthContext, CartContext, WishListContext };
+export { AuthContext, CartContext, WishListContext, DataContext };
 
 // Call make Server
 makeServer();
@@ -25,11 +26,13 @@ const Main = () => (
   <Router>
     <React.StrictMode>
       <AuthContextProvider>
-        <WishListContextProvider>
-          <CartContextProvider>
-            <App />
-          </CartContextProvider>
-        </WishListContextProvider>
+        <DataContextProvider>
+          <WishListContextProvider>
+            <CartContextProvider>
+              <App />
+            </CartContextProvider>
+          </WishListContextProvider>
+        </DataContextProvider>
       </AuthContextProvider>
     </React.StrictMode>
   </Router>

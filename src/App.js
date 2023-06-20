@@ -7,6 +7,9 @@ import { Home } from "./pages/Home";
 import Products from "./pages/Products";
 import WishList from "./pages/WishList";
 import Cart from "./pages/Cart";
+// import { UserDetails } from "./pages/userDetails";
+import { Userdetails } from "./pages/Userinfo";
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +21,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/userdetails" element={<Userdetails />} />
       </Routes>
     </div>
   );

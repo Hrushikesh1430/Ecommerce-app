@@ -1,19 +1,29 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isloggedIn, setIsLoggedIn] = useState(false);
   const [userToken, setUserToken] = useState("");
+  const [user, setUser] = useState({});
+
+  const checkLogin = () => {
+    if (localStorage.getItem("userToken")) {
+      let loggedUser = localStorage.getItem("loggedUser");
+      setUserToken(localStorage.userToken);
+      setUser(JSON.parse(loggedUser));
+      setIsLoggedIn(true);
+      navigate("/userdetails");
+    }
+  };
 
   const signupAPI = (data) => {};
   const loginAPI = (data) => {};
 
   useEffect(() => {
-    if (localStorage.userToken) {
-      setUserToken(localStorage.userToken);
-      setIsLoggedIn(true);
-    }
+    checkLogin();
   }, []);
 
   return (
@@ -23,6 +33,9 @@ export const AuthContextProvider = ({ children }) => {
         setUserToken,
         isloggedIn,
         setIsLoggedIn,
+        checkLogin,
+        user,
+        setUser,
       }}
     >
       {children}

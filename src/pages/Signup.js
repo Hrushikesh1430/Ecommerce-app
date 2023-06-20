@@ -8,10 +8,11 @@ import styles from "./signup.module.css";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isloggedIn, setIsLoggedIn, checkLogin } = useContext(AuthContext);
 
+  // Function to Redirect to userdetails if logged in
   useEffect(() => {
-    isloggedIn && navigate("/");
+    checkLogin();
   }, []);
 
   const intitalValues = {

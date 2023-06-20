@@ -92,6 +92,8 @@
 }
 .cartBillingContainer {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .cartBillList {
   margin-top: 30px;
@@ -106,9 +108,10 @@
   justify-content: space-between;
   width: 300px;
 }
-.billItemName {
-  /* width: 50px; */
+.checkout {
+  margin-top: 20px;
 }
+
 .billHeader,
 .total {
   margin-top: 20px;
