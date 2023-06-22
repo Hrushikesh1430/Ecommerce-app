@@ -298,9 +298,8 @@ export const AddressForm = (props) => {
             )
           )
         : setAddress((address) => [...address, data]);
-
-      props.setVisible(false);
     }
+    props.setAddressModal(false);
   };
 
   return (
@@ -465,7 +464,9 @@ export const AddressForm = (props) => {
             <span className={styles.warning}>{formValues.pincode.error}</span>
           )}
 
-          <button type="submit">Add Address</button>
+          <button type="submit">
+            {props.edit ? "Edit Address" : "Add Address"}
+          </button>
         </form>
       </div>
     </>

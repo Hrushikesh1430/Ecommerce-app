@@ -4,6 +4,7 @@ import { AuthContext, DataContext } from "..";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AddressForm } from "../Components/AddressForm";
+import { CustomModal } from "../Components/CustomModal";
 
 export const Userdetails = () => {
   const { user } = useContext(AuthContext);
@@ -11,13 +12,25 @@ export const Userdetails = () => {
 
   const [edit, setEdit] = useState(false);
   const [addressValue, setAddressValue] = useState({});
-  const [visible, setVisibile] = useState(false);
+
+  const [addressModal, setAddressModal] = useState(false);
 
   const navigate = useNavigate();
 
   return (
     <>
       <Navbar />
+
+      <CustomModal
+        onClose={() => setAddressModal(false)}
+        modalOpen={addressModal}
+      >
+        <AddressForm
+          edit={edit}
+          addressValue={addressValue}
+          setAddressModal={setAddressModal}
+        />
+      </CustomModal>
 
       <div className={styles.userDetailsParent}>
         <div className={styles.userDetailsContainer}>
@@ -34,7 +47,7 @@ export const Userdetails = () => {
               <button
                 className={styles.addAddress}
                 onClick={() => {
-                  setVisibile(true);
+                  setAddressModal(true);
                   setEdit(false);
                 }}
               >
@@ -54,7 +67,7 @@ export const Userdetails = () => {
 
                       <button
                         onClick={() => {
-                          setVisibile(true);
+                          setAddressModal(true);
                           setEdit(true);
                           setAddressValue(item);
                         }}
@@ -67,13 +80,6 @@ export const Userdetails = () => {
               )}
             </div>
           </div>
-          {visible && (
-            <AddressForm
-              edit={edit}
-              addressValue={addressValue}
-              setVisible={setVisibile}
-            />
-          )}
         </div>
       </div>
     </>

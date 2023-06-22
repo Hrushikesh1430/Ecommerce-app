@@ -8,6 +8,7 @@ import AllenSolly from "../assets/men/Allen_Solly_Jacket.jpg";
 
 import { AuthContext, CartContext, WishListContext } from "..";
 import { addItemToCartHandler } from "../backend/controllers/CartController";
+import { CustomModal } from "../Components/CustomModal";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Products = () => {
   return (
     <>
       <Navbar />
+
       <div className={styles.productParent}>
         <h1 className={styles.productTitle}>Products</h1>
         <div className={styles.productContainer}>

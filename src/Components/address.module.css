@@ -1,7 +1,6 @@
 .addressForm {
   display: grid;
   place-items: center;
-  min-height: 100vh;
 }
 .addressForm h3 {
   text-align: center;
