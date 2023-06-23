@@ -298,8 +298,8 @@ export const AddressForm = (props) => {
             )
           )
         : setAddress((address) => [...address, data]);
+      props.setAddressModal(false);
     }
-    props.setAddressModal(false);
   };
 
   return (

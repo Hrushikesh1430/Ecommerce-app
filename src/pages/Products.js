@@ -38,9 +38,71 @@ const Products = () => {
   return (
     <>
       <Navbar />
-
+      <h1 className={styles.productTitle}>Products</h1>
       <div className={styles.productParent}>
-        <h1 className={styles.productTitle}>Products</h1>
+        <div className={styles.filters}>
+          <div className={styles.filterHeader}>
+            <h2>Filters</h2>
+            <p>Clear</p>
+          </div>
+          <div className={styles.categories}>
+            <h4>Categories</h4>
+            <div>
+              <input type="checkbox" value="men" />
+              <label>Men</label>
+            </div>
+            <div>
+              <input type="checkbox" value="women" />
+              <label>Women</label>
+            </div>
+            <div>
+              <input type="checkbox" value="kids" />
+              <label>Kids</label>
+            </div>
+          </div>
+          <div className={styles.sizes}>
+            <h4>Sizes</h4>
+            <div>
+              <input type="checkbox" value="S" />
+              <label>S</label>
+            </div>
+            <div>
+              <input type="checkbox" value="M" />
+              <label>M</label>
+            </div>
+            <div>
+              <input type="checkbox" value="L" />
+              <label>L</label>
+            </div>
+            <div>
+              <input type="checkbox" value="XL" />
+              <label>XL</label>
+            </div>
+            <div>
+              <input type="checkbox" value="XxL" />
+              <label>XXL</label>
+            </div>
+          </div>
+          <div className={styles.rating}>
+            <h4>Rating</h4>
+            <div>
+              <input type="radio" value="4" name="rating" />
+              <label>4 stars and above</label>
+            </div>
+            <div>
+              <input type="radio" value="3" name="rating" />
+              <label>3 stars and above</label>
+            </div>
+            <div>
+              <input type="radio" value="2" name="rating" />
+              <label>2 stars and above</label>
+            </div>
+            <div>
+              <input type="radio" value="1" name="rating" />
+              <label>1 stars and above</label>
+            </div>
+          </div>
+        </div>
         <div className={styles.productContainer}>
           {products.map((item) => (
             <div className={styles.productCard}>

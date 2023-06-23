@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "..";
 const Navbar = () => {
   const navigate = useNavigate();
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn, setUser, setUserToken } = useContext(AuthContext);
   return (
     <>
       <nav>
@@ -24,6 +24,9 @@ const Navbar = () => {
           <button
             onClick={() => {
               localStorage.removeItem("userToken");
+              localStorage.removeItem("loggedUser");
+              setUserToken("");
+              setUser({});
               setIsLoggedIn(false);
               navigate("/login");
             }}

@@ -15,16 +15,11 @@ export const AuthContextProvider = ({ children }) => {
       setUserToken(localStorage.userToken);
       setUser(JSON.parse(loggedUser));
       setIsLoggedIn(true);
-      navigate("/userdetails");
     }
   };
 
   const signupAPI = (data) => {};
   const loginAPI = (data) => {};
-
-  useEffect(() => {
-    checkLogin();
-  }, []);
 
   return (
     <AuthContext.Provider

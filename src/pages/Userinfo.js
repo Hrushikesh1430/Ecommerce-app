@@ -10,10 +10,16 @@ export const Userdetails = () => {
   const { user } = useContext(AuthContext);
   const { address, setAddress } = useContext(DataContext);
 
-  const [edit, setEdit] = useState(false);
-  const [addressValue, setAddressValue] = useState({});
+  const [currentAddress, setCurrentAddress] = useState({});
 
+  const [edit, setEdit] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
+
+  const deleteAddressHandler = (addressItem) => {
+    setAddress((address) =>
+      address.filter((item) => item.id !== addressItem.id)
+    );
+  };
 
   const navigate = useNavigate();
 
@@ -27,7 +33,7 @@ export const Userdetails = () => {
       >
         <AddressForm
           edit={edit}
-          addressValue={addressValue}
+          addressValue={currentAddress}
           setAddressModal={setAddressModal}
         />
       </CustomModal>
@@ -69,12 +75,14 @@ export const Userdetails = () => {
                         onClick={() => {
                           setAddressModal(true);
                           setEdit(true);
-                          setAddressValue(item);
+                          setCurrentAddress(item);
                         }}
                       >
                         Edit
                       </button>
-                      <button>Delete</button>
+                      <button onClick={() => deleteAddressHandler(item)}>
+                        Delete
+                      </button>
                     </div>
                   )
               )}

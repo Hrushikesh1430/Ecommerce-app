@@ -1,19 +1,15 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import { AuthContext } from "..";
 import { regexCheck } from "../Common/Utility";
 
 import styles from "./signup.module.css";
+import Navbar from "../Components/Navbar";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { checkLogin } = useContext(AuthContext);
-
-  // Function to Redirect to userdetails if logged in
-  useEffect(() => {
-    checkLogin();
-  }, []);
+  const { checkLogin, isloggedIn } = useContext(AuthContext);
 
   const intitalValues = {
     firstName: {
@@ -227,8 +223,13 @@ const Signup = () => {
       }
     }
   };
+
+  if (isloggedIn) {
+    return <Navigate to="/userdetails" replace />;
+  }
   return (
     <>
+      <Navbar />
       <div className={styles.signup}>
         <form onSubmit={submitHandler}>
           <h3>Signup</h3>

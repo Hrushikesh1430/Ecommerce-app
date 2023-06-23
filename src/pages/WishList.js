@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import styles from "./products.module.css";
 
@@ -11,8 +11,6 @@ import { AuthContext, CartContext, WishListContext } from "..";
 const WishList = () => {
   const navigate = useNavigate();
 
-  const { isloggedIn } = useContext(AuthContext);
-
   const { wishList, addToWishList, deleteWishList, getWishListAPI } =
     useContext(WishListContext);
 
@@ -20,9 +18,10 @@ const WishList = () => {
     <>
       <Navbar />
       <h2>This is the wishlist</h2>
-      {isloggedIn ? (
-        <div className={styles.productContainer}>
-          {wishList.map((item) => (
+
+      <div className={styles.productContainer}>
+        {wishList.length > 0 ? (
+          wishList.map((item) => (
             <div className={styles.productCard}>
               <img src={AllenSolly} alt={item.name} />
               <p>{item.brand}</p>
@@ -48,11 +47,11 @@ const WishList = () => {
                 )}
               </div>
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>Please login to add items to wishlist</p>
-      )}
+          ))
+        ) : (
+          <p>Please add items in the wishlist</p>
+        )}
+      </div>
     </>
   );
 };

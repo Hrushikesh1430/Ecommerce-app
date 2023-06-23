@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import { AuthContext, CartContext, WishListContext } from "..";
 
@@ -10,16 +10,10 @@ import Navbar from "../Components/Navbar";
 const Login = () => {
   const navigate = useNavigate();
 
-  const { isloggedIn, setUserToken, setIsLoggedIn, checkLogin, setUser } =
+  const { isloggedIn, setUserToken, setIsLoggedIn, setUser } =
     useContext(AuthContext);
   const { getWishListAPI } = useContext(WishListContext);
   const { getCartItemsAPI } = useContext(CartContext);
-
-  // Function to Redirect to userdetails if logged in
-
-  useEffect(() => {
-    checkLogin();
-  }, []);
 
   const [formValues, setFormValues] = useState({
     email: {
@@ -146,6 +140,12 @@ const Login = () => {
       }
     }
   };
+
+  // Redirect to userdetails if logged in
+  if (isloggedIn) {
+    return <Navigate to="/userdetails" replace />;
+  }
+
   return (
     <>
       <Navbar />

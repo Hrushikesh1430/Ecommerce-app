@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,15 @@ export const CartContextProvider = ({ children }) => {
   const { userToken } = useContext(AuthContext);
 
   const [cart, setCart] = useState([]);
+  const [totalCartAmount, settotalCartAmount] = useState(0);
+
+  useEffect(() => {
+    settotalCartAmount(() =>
+      cart.reduce((acc, { price, qty }) => {
+        return acc + Number(price) * qty;
+      }, 0)
+    );
+  }, [cart]);
 
   const getCartItemsAPI = async (token = userToken) => {
     const url = "/api/user/cart";
@@ -95,6 +104,8 @@ export const CartContextProvider = ({ children }) => {
         cart,
         setCart,
         addCartHandler,
+        totalCartAmount,
+        settotalCartAmount,
         getCartItemsAPI,
         deleteCartHandler,
         cartQuantityAPI,
