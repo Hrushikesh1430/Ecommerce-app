@@ -13,6 +13,8 @@ export const products = [
     price: "999",
     categoryName: "Men",
     image: "Allen_Solly_Jacket.jpg",
+    size: "M",
+    rating: "4.5",
   },
   {
     _id: uuid(),
@@ -21,6 +23,8 @@ export const products = [
     price: "1499",
     categoryName: "Men",
     image: "",
+    size: "M",
+    rating: "4.8",
   },
   {
     _id: uuid(),
@@ -29,6 +33,8 @@ export const products = [
     price: "899",
     categoryName: "Men",
     image: "",
+    size: "L",
+    rating: "3.6",
   },
   {
     _id: uuid(),
@@ -37,6 +43,8 @@ export const products = [
     price: "699",
     categoryName: "Men",
     image: "",
+    size: "L",
+    rating: "3.8",
   },
   {
     _id: uuid(),
@@ -45,6 +53,8 @@ export const products = [
     price: "1999",
     categoryName: "Men",
     image: "",
+    size: "S",
+    rating: "2.8",
   },
   {
     _id: uuid(),
@@ -53,6 +63,8 @@ export const products = [
     price: "1399",
     categoryName: "Men",
     image: "",
+    size: "S",
+    rating: "5",
   },
   {
     _id: uuid(),
@@ -61,6 +73,8 @@ export const products = [
     price: "1599",
     categoryName: "Men",
     image: "",
+    size: "XL",
+    rating: "5",
   },
   {
     _id: uuid(),
@@ -69,6 +83,8 @@ export const products = [
     price: "999",
     categoryName: "Men",
     image: "",
+    size: "XL",
+    rating: "1.5",
   },
   {
     _id: uuid(),
@@ -77,6 +93,8 @@ export const products = [
     price: "1999",
     categoryName: "Men",
     image: "",
+    size: "S",
+    rating: "1.8",
   },
   {
     _id: uuid(),
@@ -85,6 +103,8 @@ export const products = [
     price: "2499",
     categoryName: "Men",
     image: "",
+    size: "S",
+    rating: "3.4",
   },
   // Women category
   {
@@ -94,6 +114,8 @@ export const products = [
     price: "999",
     categoryName: "Women",
     image: "",
+    size: "M",
+    rating: "4.5",
   },
   {
     _id: uuid(),
@@ -102,6 +124,8 @@ export const products = [
     price: "1599",
     categoryName: "Women",
     image: "",
+    size: "M",
+    rating: "4.2",
   },
   {
     _id: uuid(),
@@ -110,6 +134,8 @@ export const products = [
     price: "1299",
     categoryName: "Women",
     image: "",
+    size: "L",
+    rating: "3.6",
   },
   {
     _id: uuid(),
@@ -118,6 +144,8 @@ export const products = [
     price: "899",
     categoryName: "Women",
     image: "",
+    size: "L",
+    rating: "3.2",
   },
   {
     _id: uuid(),
@@ -126,6 +154,8 @@ export const products = [
     price: "1799",
     categoryName: "Women",
     image: "",
+    size: "XL",
+    rating: "2.6",
   },
   {
     _id: uuid(),
@@ -134,6 +164,8 @@ export const products = [
     price: "1499",
     categoryName: "Women",
     image: "",
+    size: "XL",
+    rating: "2.2",
   },
   {
     _id: uuid(),
@@ -142,6 +174,8 @@ export const products = [
     price: "1999",
     categoryName: "Women",
     image: "",
+    size: "M",
+    rating: "1.2",
   },
   {
     _id: uuid(),
@@ -150,6 +184,8 @@ export const products = [
     price: "1599",
     categoryName: "Women",
     image: "",
+    size: "M",
+    rating: "1.8",
   },
   {
     _id: uuid(),
@@ -158,6 +194,8 @@ export const products = [
     price: "1299",
     categoryName: "Women",
     image: "",
+    size: "L",
+    rating: "4.8",
   },
   {
     _id: uuid(),
@@ -166,6 +204,8 @@ export const products = [
     price: "1899",
     categoryName: "Women",
     image: "",
+    size: "L",
+    rating: "4.4",
   },
 
   // kids category
@@ -177,6 +217,8 @@ export const products = [
     price: "1799",
     categoryName: "Kids",
     image: "",
+    size: "XL",
+    rating: "1.4",
   },
   {
     _id: uuid(),
@@ -185,6 +227,8 @@ export const products = [
     price: "999",
     categoryName: "Kids",
     image: "",
+    size: "XL",
+    rating: "1.2",
   },
   {
     _id: uuid(),
@@ -193,6 +237,8 @@ export const products = [
     price: "1299",
     categoryName: "Kids",
     image: "",
+    size: "L",
+    rating: "2.6",
   },
   {
     _id: uuid(),
@@ -201,6 +247,8 @@ export const products = [
     price: "1999",
     categoryName: "Kids",
     image: "",
+    size: "L",
+    rating: "2.6",
   },
   {
     _id: uuid(),
@@ -209,6 +257,8 @@ export const products = [
     price: "1599",
     categoryName: "Kids",
     image: "",
+    size: "S",
+    rating: "3.6",
   },
   {
     _id: uuid(),
@@ -217,6 +267,8 @@ export const products = [
     price: "899",
     categoryName: "Kids",
     image: "",
+    size: "S",
+    rating: "3.8",
   },
   {
     _id: uuid(),
@@ -225,6 +277,8 @@ export const products = [
     price: "1699",
     categoryName: "Kids",
     image: "",
+    size: "M",
+    rating: "5",
   },
   {
     _id: uuid(),
@@ -233,6 +287,7 @@ export const products = [
     price: "1299",
     categoryName: "Kids",
     image: "",
+    rating: "1.2",
   },
   {
     _id: uuid(),
@@ -241,6 +296,8 @@ export const products = [
     price: "1499",
     categoryName: "Kids",
     image: "",
+    size: "L",
+    rating: "1.7",
   },
   {
     _id: uuid(),
@@ -249,6 +306,8 @@ export const products = [
     price: "1299",
     categoryName: "Kids",
     image: "",
+    size: "L",
+    rating: "4.7",
   },
   {
     _id: uuid(),
@@ -257,21 +316,7 @@ export const products = [
     price: "1599",
     categoryName: "Kids",
     image: "",
+    size: "XL",
+    rating: "4.2",
   },
-
-  // {
-
-  //   _id: uuid(),
-  //   title: "You are Winner",
-  //   author: "Junaid Qureshi",
-  //   price: "3000",
-  //   categoryName: "horror",
-  // },
-  // {
-  //   _id: uuid(),
-  //   title: "Think and Grow Rich",
-  //   author: "Shiv Khera",
-  //   price: "1000",
-  //   categoryName: "fiction",
-  // },
 ];

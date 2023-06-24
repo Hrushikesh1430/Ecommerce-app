@@ -8,7 +8,7 @@
   grid-gap: 1.5rem;
   gap: 1.5rem; */
   flex-wrap: wrap;
-  padding: 1rem;
+  padding: 10px;
 }
 .productCard {
   border: 2px solid black;
@@ -118,10 +118,11 @@
   justify-content: space-between;
 }
 .filters {
-  padding: 1rem;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 300px;
 }
 .filterHeader {
   display: flex;
@@ -138,4 +139,25 @@
 }
 .categories label {
   display: inline-block;
+}
+
+.slideContainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 200px; /* Full-width */
+  height: 10px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+.clear {
+  cursor: pointer;
+  text-decoration: underline;
 }

@@ -1,11 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { v4 as uuid } from "uuid";
 import { AuthContext } from "..";
+import { FilterReducer, InitialState } from "../Reducers/FilterReducer";
 
 export const DataContext = createContext();
 
 export const DataContextProvider = ({ children }) => {
-  const { user } = useContext(AuthContext);
   const [address, setAddress] = useState([
     {
       id: uuid(),
@@ -41,6 +47,7 @@ export const DataContextProvider = ({ children }) => {
       pincode: "400024",
     },
   ]);
+  const [state, dispatch] = useReducer(FilterReducer, InitialState);
 
   const [checkoutTotal, setcheckOutTotal] = useState(0);
 
@@ -54,6 +61,8 @@ export const DataContextProvider = ({ children }) => {
         checkoutTotal,
         setcheckOutTotal,
         deliveryCharges,
+        state,
+        dispatch,
       }}
     >
       {children}
