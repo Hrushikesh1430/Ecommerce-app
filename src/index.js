@@ -9,10 +9,7 @@ import { makeServer } from "./server";
 
 import { AuthContextProvider, AuthContext } from "./Context/AuthContext";
 import { CartContext, CartContextProvider } from "./Context/CartContext";
-import {
-  WishListContext,
-  WishListContextProvider,
-} from "./Context/WishListContext";
+import { WishListContext, WishListContextProvider } from "./Context/WishListContext";
 import { DataContext, DataContextProvider } from "./Context/DataContext";
 
 export { AuthContext, CartContext, WishListContext, DataContext };

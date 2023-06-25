@@ -159,8 +159,7 @@ const Signup = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     let validationError = false;
-    const { firstName, lastName, email, password, confirmPassword } =
-      formValues;
+    const { firstName, lastName, email, password, confirmPassword } = formValues;
 
     const errorFor = (validationError) => {
       for (const key in formValues) {
@@ -179,13 +178,7 @@ const Signup = () => {
     errorCheck("confirmPassword", confirmPassword.value);
 
     validationError =
-      firstName.value === "" ||
-      lastName.value === "" ||
-      email.value === "" ||
-      password.value === "" ||
-      confirmPassword.value === ""
-        ? true
-        : false;
+      firstName.value === "" || lastName.value === "" || email.value === "" || password.value === "" || confirmPassword.value === "" ? true : false;
 
     !validationError && errorFor(validationError);
 
@@ -236,9 +229,7 @@ const Signup = () => {
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
-            className={`${styles.firstName} ${
-              formValues.firstName.error !== "" && styles.error
-            }`}
+            className={`${styles.firstName} ${formValues.firstName.error !== "" && styles.error}`}
             id="firstName"
             name="firstName"
             onChange={(e) => {
@@ -249,15 +240,11 @@ const Signup = () => {
               errorCheck("firstName", e.target.value);
             }}
           />
-          {formValues.firstName.error !== "" && (
-            <span className={styles.warning}>{formValues.firstName.error}</span>
-          )}
+          {formValues.firstName.error !== "" && <span className={styles.warning}>{formValues.firstName.error}</span>}
           <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
-            className={`${styles.lastName} ${
-              formValues.lastName.error !== "" && styles.error
-            }`}
+            className={`${styles.lastName} ${formValues.lastName.error !== "" && styles.error}`}
             id="lastName"
             name="lastName"
             onChange={(e) => {
@@ -268,15 +255,11 @@ const Signup = () => {
               errorCheck("lastName", e.target.value);
             }}
           />
-          {formValues.lastName.error !== "" && (
-            <span className={styles.warning}>{formValues.lastName.error}</span>
-          )}
+          {formValues.lastName.error !== "" && <span className={styles.warning}>{formValues.lastName.error}</span>}
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            className={`${styles.email} ${
-              formValues.email.error !== "" && styles.error
-            }`}
+            className={`${styles.email} ${formValues.email.error !== "" && styles.error}`}
             id="signupemail"
             name="email"
             onChange={(e) => {
@@ -287,15 +270,11 @@ const Signup = () => {
               errorCheck("email", e.target.value);
             }}
           />
-          {formValues.email.error !== "" && (
-            <span className={styles.warning}>{formValues.email.error}</span>
-          )}
+          {formValues.email.error !== "" && <span className={styles.warning}>{formValues.email.error}</span>}
           <label htmlFor="password">Password</label>
           <input
             type={passwordType}
-            className={`${styles.password} ${
-              formValues.password.error !== "" && styles.error
-            }`}
+            className={`${styles.password} ${formValues.password.error !== "" && styles.error}`}
             id="signupassword"
             name="password"
             onChange={(e) => {
@@ -306,18 +285,9 @@ const Signup = () => {
               errorCheck("password", e.target.value);
             }}
           />
-          {formValues.password.error !== "" && (
-            <span className={styles.warning}>{formValues.password.error}</span>
-          )}
+          {formValues.password.error !== "" && <span className={styles.warning}>{formValues.password.error}</span>}
           <div>
-            <input
-              type="checkbox"
-              onChange={(e) =>
-                e.target.checked
-                  ? setPasswordType("text")
-                  : setPasswordType("password")
-              }
-            />
+            <input type="checkbox" onChange={(e) => (e.target.checked ? setPasswordType("text") : setPasswordType("password"))} />
             <label htmlFor="showPassword" className={styles.showPasswordLabel}>
               Show Password
             </label>
@@ -325,9 +295,7 @@ const Signup = () => {
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
-            className={`${styles.password} ${
-              formValues.confirmPassword.error !== "" && styles.error
-            }`}
+            className={`${styles.password} ${formValues.confirmPassword.error !== "" && styles.error}`}
             id="confirmPassword"
             name="confirmPassword"
             onChange={(e) => {
@@ -341,11 +309,7 @@ const Signup = () => {
               errorCheck("confirmPassword", e.target.value);
             }}
           />
-          {formValues.confirmPassword.error !== "" && (
-            <span className={styles.warning}>
-              {formValues.confirmPassword.error}
-            </span>
-          )}
+          {formValues.confirmPassword.error !== "" && <span className={styles.warning}>{formValues.confirmPassword.error}</span>}
           <button type="submit">Sign up</button>
           <span className={styles.registered}>Already a registered user?</span>
           <p className={styles.loginText} onClick={() => navigate("/login")}>

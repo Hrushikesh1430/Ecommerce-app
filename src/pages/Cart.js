@@ -13,13 +13,10 @@ const WishList = () => {
 
   const { isloggedIn } = useContext(AuthContext);
 
-  const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI } =
-    useContext(CartContext);
+  const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI } = useContext(CartContext);
 
   const quantityHandler = (productId, action, quantity) => {
-    action === "decrement" && quantity === 1
-      ? deleteCartHandler(productId)
-      : cartQuantityAPI(productId, action);
+    action === "decrement" && quantity === 1 ? deleteCartHandler(productId) : cartQuantityAPI(productId, action);
   };
 
   return (
@@ -39,10 +36,7 @@ const WishList = () => {
                   <p className={styles.name}>{item.name}</p>
                   <p className={styles.price}>₹ {item.price}</p>
                   <div className={styles.buttonContainer}>
-                    <button
-                      className={styles.addCart}
-                      onClick={() => deleteCartHandler(item._id)}
-                    >
+                    <button className={styles.addCart} onClick={() => deleteCartHandler(item._id)}>
                       Remove from Cart
                     </button>
                   </div>
@@ -54,19 +48,8 @@ const WishList = () => {
                     >
                       +
                     </button>
-                    <input
-                      type="text"
-                      value={item.qty}
-                      className={styles.quantity}
-                      disabled={true}
-                    />
-                    <button
-                      onClick={(e) =>
-                        quantityHandler(item._id, "decrement", item.qty)
-                      }
-                    >
-                      -
-                    </button>
+                    <input type="text" value={item.qty} className={styles.quantity} disabled={true} />
+                    <button onClick={(e) => quantityHandler(item._id, "decrement", item.qty)}>-</button>
                   </div>
                 </div>
               </div>
@@ -93,10 +76,7 @@ const WishList = () => {
                 <span>{totalCartAmount}</span>
               </div>
             </div>
-            <button
-              className={styles.checkout}
-              onClick={() => navigate("/checkout")}
-            >
+            <button className={styles.checkout} onClick={() => navigate("/checkout")}>
               Checkout
             </button>
           </div>

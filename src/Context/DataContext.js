@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { AuthContext } from "..";
 import { FilterReducer, InitialState } from "../Reducers/FilterReducer";

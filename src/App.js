@@ -31,28 +31,10 @@ function App() {
 
         <Route path="/products" element={<Products />} />
 
-        <Route
-          path="/wishlist"
-          element={
-            <ProtectedRoutes component={<WishList />} redirect={"login"} />
-          }
-        />
-        <Route
-          path="/cart"
-          element={<ProtectedRoutes component={<Cart />} redirect={"login"} />}
-        />
-        <Route
-          path="/userdetails"
-          element={
-            <ProtectedRoutes component={<Userdetails />} redirect={"login"} />
-          }
-        />
-        <Route
-          path="/checkout"
-          element={
-            <ProtectedRoutes component={<Checkout />} redirect={"login"} />
-          }
-        />
+        <Route path="/wishlist" element={<ProtectedRoutes component={<WishList />} redirect={"login"} />} />
+        <Route path="/cart" element={<ProtectedRoutes component={<Cart />} redirect={"login"} />} />
+        <Route path="/userdetails" element={<ProtectedRoutes component={<Userdetails />} redirect={"login"} />} />
+        <Route path="/checkout" element={<ProtectedRoutes component={<Checkout />} redirect={"login"} />} />
       </Routes>
     </div>
   );

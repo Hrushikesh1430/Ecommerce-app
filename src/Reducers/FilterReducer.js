@@ -4,6 +4,7 @@ import { DataContext } from "../Context/DataContext";
 export const InitialState = {
   intialProductList: [],
   filteredProducts: [],
+  searchList: [],
   categoryCheck: [],
   sizeCheck: [],
   rating: "",
@@ -56,6 +57,11 @@ export const FilterReducer = (state, { type, payLoad }) => {
         rating: "",
         sortOrder: "",
         price: "2000",
+      };
+    case "SEARCH_FILTER":
+      return {
+        ...state,
+        searchList: payLoad.length === 0 ? [] : state.intialProductList.filter(({ brand }) => brand.toLowerCase().includes(payLoad)).slice(0, 7),
       };
     case "SET_FILTERED_PRODUCTS":
       return { ...state, filteredProducts: payLoad };

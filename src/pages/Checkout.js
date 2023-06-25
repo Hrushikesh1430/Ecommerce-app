@@ -7,8 +7,7 @@ import { useContext, useEffect, useState } from "react";
 
 export const Checkout = () => {
   const { user } = useContext(AuthContext);
-  const { address, deliveryCharges, checkoutTotal, setcheckOutTotal } =
-    useContext(DataContext);
+  const { address, deliveryCharges, checkoutTotal, setcheckOutTotal } = useContext(DataContext);
 
   const { cart, totalCartAmount } = useContext(CartContext);
 
@@ -41,9 +40,7 @@ export const Checkout = () => {
                       type="radio"
                       name="address"
                       value={item.id}
-                      onChange={(e) =>
-                        addressChangeHandler(e.target.value, index)
-                      }
+                      onChange={(e) => addressChangeHandler(e.target.value, index)}
                       checked={currentAddress.id === item.id}
                     />
                     <label htmlFor="address">

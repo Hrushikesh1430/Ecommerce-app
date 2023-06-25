@@ -44,20 +44,12 @@ const Products = () => {
 
     finalList = priceSliderArr.length > 0 ? priceSliderArr : finalList;
     dispatch({ type: "SET_FILTERED_PRODUCTS", payLoad: finalList });
-  }, [
-    state.categoryCheck,
-    state.sizeCheck,
-    state.rating,
-    state.sortOrder,
-    state.price,
-  ]);
+  }, [state.categoryCheck, state.sizeCheck, state.rating, state.sortOrder, state.price]);
 
   const filterByCategory = () => {
     let filteredbyCat = [];
     for (let i = 0; i < state.categoryCheck.length; i++) {
-      let tempCat = state.intialProductList.filter(
-        ({ categoryName }) => state.categoryCheck[i] === categoryName
-      );
+      let tempCat = state.intialProductList.filter(({ categoryName }) => state.categoryCheck[i] === categoryName);
       filteredbyCat.push(...tempCat);
     }
     return filteredbyCat.length > 0 ? filteredbyCat : state.intialProductList;
@@ -71,23 +63,17 @@ const Products = () => {
     return filteredbySize.length > 0 ? filteredbySize : array;
   };
   const filterByRating = (array) => {
-    let tempRating = array.filter(
-      ({ rating }) => Number(rating) >= Number(state.rating)
-    );
+    let tempRating = array.filter(({ rating }) => Number(rating) >= Number(state.rating));
     tempRating.sort((a, b) => Number(b.rating) - Number(a.rating));
     return tempRating.length > 0 ? tempRating : array;
   };
   const sortProduct = (array) => {
     let tempSorted =
-      state.sortOrder === "low"
-        ? array.sort((a, b) => Number(a.price) - Number(b.price))
-        : array.sort((a, b) => Number(b.price) - Number(a.price));
+      state.sortOrder === "low" ? array.sort((a, b) => Number(a.price) - Number(b.price)) : array.sort((a, b) => Number(b.price) - Number(a.price));
     return tempSorted.length > 0 ? tempSorted : array;
   };
   const sortbyPriceSlider = (array) => {
-    let tempSortedPrice = array.filter(
-      ({ price }) => Number(price) <= Number(state.price)
-    );
+    let tempSortedPrice = array.filter(({ price }) => Number(price) <= Number(state.price));
 
     console.log("tempSorted", tempSortedPrice);
     return tempSortedPrice.length > 0 ? tempSortedPrice : [];
@@ -331,14 +317,13 @@ const Products = () => {
             </div>
           </div>
           <div className={styles.priceSlider}>
-            <h4>Price</h4>
+            <h4>Price Range</h4>
             <div>
               <div className={styles.slideContainer}>
                 <input
                   type="range"
                   min="1"
                   max="2000"
-                  defaultValue={state.price}
                   onChange={(e) =>
                     dispatch({
                       type: "PRICE_SLIDER",
@@ -370,34 +355,20 @@ const Products = () => {
                 <p className={styles.name}>{item.name}</p>
                 <div className={styles.buttonContainer}>
                   {cart.find((cartItem) => cartItem._id === item._id) ? (
-                    <button
-                      className={styles.addWishList}
-                      onClick={() => navigate("/cart")}
-                    >
+                    <button className={styles.addWishList} onClick={() => navigate("/cart")}>
                       Go to Cart
                     </button>
                   ) : (
-                    <button
-                      className={styles.addWishList}
-                      onClick={() => addCartHandler(item)}
-                    >
+                    <button className={styles.addWishList} onClick={() => addCartHandler(item)}>
                       Add to Cart
                     </button>
                   )}
-                  {wishList.find(
-                    (wishListItem) => wishListItem._id === item._id
-                  ) ? (
-                    <button
-                      className={styles.addWishList}
-                      onClick={() => navigate("/wishlist")}
-                    >
+                  {wishList.find((wishListItem) => wishListItem._id === item._id) ? (
+                    <button className={styles.addWishList} onClick={() => navigate("/wishlist")}>
                       Go to WishList
                     </button>
                   ) : (
-                    <button
-                      className={styles.addWishList}
-                      onClick={() => addToWishList(item)}
-                    >
+                    <button className={styles.addWishList} onClick={() => addToWishList(item)}>
                       Add to WishList
                     </button>
                   )}

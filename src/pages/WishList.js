@@ -11,8 +11,7 @@ import { AuthContext, CartContext, WishListContext } from "..";
 const WishList = () => {
   const navigate = useNavigate();
 
-  const { wishList, addToWishList, deleteWishList, getWishListAPI } =
-    useContext(WishListContext);
+  const { wishList, addToWishList, deleteWishList, getWishListAPI } = useContext(WishListContext);
 
   return (
     <>
@@ -28,20 +27,12 @@ const WishList = () => {
               <p className={styles.name}>{item.name}</p>
               <div className={styles.buttonContainer}>
                 <button className={styles.addCart}>Add to Cart</button>
-                {wishList.find(
-                  (wishListItem) => wishListItem._id === item._id
-                ) ? (
-                  <button
-                    className={styles.addWishList}
-                    onClick={() => deleteWishList(item._id)}
-                  >
+                {wishList.find((wishListItem) => wishListItem._id === item._id) ? (
+                  <button className={styles.addWishList} onClick={() => deleteWishList(item._id)}>
                     Remove from WishList
                   </button>
                 ) : (
-                  <button
-                    className={styles.addWishList}
-                    onClick={() => addToWishList(item)}
-                  >
+                  <button className={styles.addWishList} onClick={() => addToWishList(item)}>
                     Add to WishList
                   </button>
                 )}

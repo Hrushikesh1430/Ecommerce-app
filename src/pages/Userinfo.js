@@ -16,9 +16,7 @@ export const Userdetails = () => {
   const [addressModal, setAddressModal] = useState(false);
 
   const deleteAddressHandler = (addressItem) => {
-    setAddress((address) =>
-      address.filter((item) => item.id !== addressItem.id)
-    );
+    setAddress((address) => address.filter((item) => item.id !== addressItem.id));
   };
 
   const navigate = useNavigate();
@@ -27,15 +25,8 @@ export const Userdetails = () => {
     <>
       <Navbar />
 
-      <CustomModal
-        onClose={() => setAddressModal(false)}
-        modalOpen={addressModal}
-      >
-        <AddressForm
-          edit={edit}
-          addressValue={currentAddress}
-          setAddressModal={setAddressModal}
-        />
+      <CustomModal onClose={() => setAddressModal(false)} modalOpen={addressModal}>
+        <AddressForm edit={edit} addressValue={currentAddress} setAddressModal={setAddressModal} />
       </CustomModal>
 
       <div className={styles.userDetailsParent}>
@@ -65,10 +56,7 @@ export const Userdetails = () => {
                   item.userId === user.id && (
                     <div className={styles.address}>
                       <p>Name : {item.name}</p>
-                      <p>
-                        Address :{" "}
-                        {`${item.residence} ${item.area} ${item.city}-${item.pincode} ${item.state}`}
-                      </p>
+                      <p>Address : {`${item.residence} ${item.area} ${item.city}-${item.pincode} ${item.state}`}</p>
                       <p>Phone : {item.phone}</p>
 
                       <button
@@ -80,9 +68,7 @@ export const Userdetails = () => {
                       >
                         Edit
                       </button>
-                      <button onClick={() => deleteAddressHandler(item)}>
-                        Delete
-                      </button>
+                      <button onClick={() => deleteAddressHandler(item)}>Delete</button>
                     </div>
                   )
               )}

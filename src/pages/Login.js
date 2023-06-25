@@ -10,8 +10,7 @@ import Navbar from "../Components/Navbar";
 const Login = () => {
   const navigate = useNavigate();
 
-  const { isloggedIn, setUserToken, setIsLoggedIn, setUser } =
-    useContext(AuthContext);
+  const { isloggedIn, setUserToken, setIsLoggedIn, setUser } = useContext(AuthContext);
   const { getWishListAPI } = useContext(WishListContext);
   const { getCartItemsAPI } = useContext(CartContext);
 
@@ -84,8 +83,7 @@ const Login = () => {
     errorCheck("email", email.value);
     errorCheck("password", password.value);
 
-    validationError =
-      email.value === "" || password.value === "" ? true : false;
+    validationError = email.value === "" || password.value === "" ? true : false;
 
     const errorFor = (validationError) => {
       for (const key in formValues) {
@@ -155,9 +153,7 @@ const Login = () => {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            className={`${styles.email} ${
-              formValues.email.error !== "" && styles.error
-            }`}
+            className={`${styles.email} ${formValues.email.error !== "" && styles.error}`}
             id="signupemail"
             name="email"
             onChange={(e) => {
@@ -168,15 +164,11 @@ const Login = () => {
               errorCheck("email", e.target.value);
             }}
           />
-          {formValues.email.error !== "" && (
-            <span className={styles.warning}>{formValues.email.error}</span>
-          )}
+          {formValues.email.error !== "" && <span className={styles.warning}>{formValues.email.error}</span>}
           <label htmlFor="password">Password</label>
           <input
             type={"password"}
-            className={`${styles.password} ${
-              formValues.password.error !== "" && styles.error
-            }`}
+            className={`${styles.password} ${formValues.password.error !== "" && styles.error}`}
             id="signupassword"
             name="password"
             onChange={(e) => {
@@ -187,9 +179,7 @@ const Login = () => {
               errorCheck("password", e.target.value);
             }}
           />
-          {formValues.password.error !== "" && (
-            <span className={styles.warning}>{formValues.password.error}</span>
-          )}
+          {formValues.password.error !== "" && <span className={styles.warning}>{formValues.password.error}</span>}
           <button type="submit">Sign in</button>
           <span>Dont't have an account?</span>
           <p className={styles.signupText} onClick={() => navigate("/signup")}>

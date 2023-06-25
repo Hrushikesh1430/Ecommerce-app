@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 export const AddressForm = (props) => {
   console.log(props.edit);
   const { user } = useContext(AuthContext);
-  const { address, setAddress } = useContext(DataContext);
+  const { setAddress } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -233,11 +233,7 @@ export const AddressForm = (props) => {
 
     const errorFor = (validationError) => {
       for (const key in formValues) {
-        if (
-          formValues[key].error !== "" ||
-          formValues[key].error !== "Please select a city" ||
-          formValues[key].error !== "Please select a state"
-        ) {
+        if (formValues[key].error !== "" || formValues[key].error !== "Please select a city" || formValues[key].error !== "Please select a state") {
           validationError = true;
           break;
         }
@@ -268,16 +264,7 @@ export const AddressForm = (props) => {
     !validationError && errorFor(validationError);
 
     if (!validationError) {
-      let newAddress =
-        residence.value +
-        " " +
-        area.value +
-        " " +
-        city.value +
-        "-" +
-        pincode.value +
-        " " +
-        state.value;
+      let newAddress = residence.value + " " + area.value + " " + city.value + "-" + pincode.value + " " + state.value;
 
       const data = {
         userId: user.id,
@@ -292,11 +279,7 @@ export const AddressForm = (props) => {
       };
 
       props.edit
-        ? setAddress((address) =>
-            address.map((item) =>
-              item.id === props.addressValue.id ? data : item
-            )
-          )
+        ? setAddress((address) => address.map((item) => (item.id === props.addressValue.id ? data : item)))
         : setAddress((address) => [...address, data]);
       props.setAddressModal(false);
     }
@@ -310,9 +293,7 @@ export const AddressForm = (props) => {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            className={`${styles.name} ${
-              formValues.name.error !== "" && styles.error
-            }`}
+            className={`${styles.name} ${formValues.name.error !== "" && styles.error}`}
             value={formValues.name.value}
             id="name"
             name="name"
@@ -327,15 +308,11 @@ export const AddressForm = (props) => {
               errorCheck("name", e.target.value);
             }}
           />
-          {formValues.name.error !== "" && (
-            <span className={styles.warning}>{formValues.name.error}</span>
-          )}
+          {formValues.name.error !== "" && <span className={styles.warning}>{formValues.name.error}</span>}
           <label htmlFor="phone">Phone</label>
           <input
             type="text"
-            className={`${styles.phone} ${
-              formValues.phone.error !== "" && styles.error
-            }`}
+            className={`${styles.phone} ${formValues.phone.error !== "" && styles.error}`}
             value={formValues.phone.value}
             id="phone"
             name="phone"
@@ -349,15 +326,11 @@ export const AddressForm = (props) => {
               errorCheck("phone", e.target.value);
             }}
           />
-          {formValues.phone.error !== "" && (
-            <span className={styles.warning}>{formValues.phone.error}</span>
-          )}
+          {formValues.phone.error !== "" && <span className={styles.warning}>{formValues.phone.error}</span>}
           <label htmlFor="residence">Flat no / Building Name </label>
           <input
             type="text"
-            className={`${styles.residence} ${
-              formValues.residence.error !== "" && styles.error
-            }`}
+            className={`${styles.residence} ${formValues.residence.error !== "" && styles.error}`}
             id="residence"
             name="residence"
             value={formValues.residence.value}
@@ -372,15 +345,11 @@ export const AddressForm = (props) => {
               errorCheck("residence", e.target.value);
             }}
           />
-          {formValues.residence.error !== "" && (
-            <span className={styles.warning}>{formValues.residence.error}</span>
-          )}
+          {formValues.residence.error !== "" && <span className={styles.warning}>{formValues.residence.error}</span>}
           <label htmlFor="area"> Area, Street, Sector, Village</label>
           <input
             type="text"
-            className={`${styles.area} ${
-              formValues.area.error !== "" && styles.error
-            }`}
+            className={`${styles.area} ${formValues.area.error !== "" && styles.error}`}
             id="area"
             name="area"
             value={formValues.area.value}
@@ -392,14 +361,10 @@ export const AddressForm = (props) => {
               errorCheck("area", e.target.value);
             }}
           />
-          {formValues.area.error !== "" && (
-            <span className={styles.warning}>{formValues.area.error}</span>
-          )}
+          {formValues.area.error !== "" && <span className={styles.warning}>{formValues.area.error}</span>}
           <label htmlFor="city">City</label>
           <select
-            className={`${styles.city} ${
-              formValues.city.error !== "" && styles.error
-            }`}
+            className={`${styles.city} ${formValues.city.error !== "" && styles.error}`}
             value={formValues.city.value}
             onChange={(e) => {
               setFormValues((formValues) => ({
@@ -416,14 +381,10 @@ export const AddressForm = (props) => {
             <option value="Mumbai">Mumbai</option>
             <option value="Pune">Pune</option>
           </select>
-          {formValues.city.error !== "" && (
-            <span className={styles.warning}>{formValues.city.error}</span>
-          )}
+          {formValues.city.error !== "" && <span className={styles.warning}>{formValues.city.error}</span>}
           <label htmlFor="state">State</label>
           <select
-            className={`${styles.state} ${
-              formValues.state.error !== "" && styles.error
-            }`}
+            className={`${styles.state} ${formValues.state.error !== "" && styles.error}`}
             value={formValues.state.value}
             onChange={(e) => {
               setFormValues((formValues) => ({
@@ -440,15 +401,11 @@ export const AddressForm = (props) => {
             <option value="Maharashtra">Maharashtra</option>
             <option value="Goa">Goa</option>
           </select>
-          {formValues.state.error !== "" && (
-            <span className={styles.warning}>{formValues.state.error}</span>
-          )}
+          {formValues.state.error !== "" && <span className={styles.warning}>{formValues.state.error}</span>}
           <label htmlFor="pincode">Pincode</label>
           <input
             type="text"
-            className={`${styles.pincode} ${
-              formValues.pincode.error !== "" && styles.error
-            }`}
+            className={`${styles.pincode} ${formValues.pincode.error !== "" && styles.error}`}
             id="pincode"
             name="pincode"
             onChange={(e) => {
@@ -460,13 +417,9 @@ export const AddressForm = (props) => {
             }}
             value={formValues.pincode.value}
           />
-          {formValues.pincode.error !== "" && (
-            <span className={styles.warning}>{formValues.pincode.error}</span>
-          )}
+          {formValues.pincode.error !== "" && <span className={styles.warning}>{formValues.pincode.error}</span>}
 
-          <button type="submit">
-            {props.edit ? "Edit Address" : "Add Address"}
-          </button>
+          <button type="submit">{props.edit ? "Edit Address" : "Add Address"}</button>
         </form>
       </div>
     </>

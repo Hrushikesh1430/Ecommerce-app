@@ -8,10 +8,7 @@ export const CustomModal = (props) => {
   return (
     <>
       <div className={styles.modal} onClick={props.onClose}>
-        <div
-          className={styles.modalContent}
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
           <div className={styles.modalClose}>
             <button onClick={props.onClose}>
               <FontAwesomeIcon icon={faClose} />

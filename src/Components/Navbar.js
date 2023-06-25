@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 import { AuthContext } from "..";
+import { SearchBar } from "./SearchBar";
 const Navbar = () => {
   const navigate = useNavigate();
   const { setIsLoggedIn, setUser, setUserToken } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Navbar = () => {
             <span className="brand">Meri Dukan</span>
           </li>
         </ul>
-
+        <SearchBar />
         <div className="loginNavWrapper">
           <Link to="/">Home</Link>
           <Link to="/login">Login</Link>
