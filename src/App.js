@@ -13,12 +13,25 @@ import { Checkout } from "./pages/Checkout";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import { ProtectedRoutes } from "./Components/ProtectedRoutes";
+import { DataContext } from ".";
 
 function App() {
   const navigate = useNavigate();
   const { checkLogin } = useContext(AuthContext);
+  const { dispatch } = useContext(DataContext);
 
-  useEffect(() => checkLogin(), []);
+  const getProductsAPI = async () => {
+    try {
+      const response = await fetch("/api/products");
+      const data = await response.json();
+      dispatch({ type: "INITIAL_FETCH", payLoad: data.products });
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    checkLogin();
+    getProductsAPI();
+  }, []);
 
   return (
     <div className="App">
