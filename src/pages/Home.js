@@ -8,7 +8,9 @@ import Navbar from "../Components/Navbar";
 
 export const Home = () => {
   const navigate = useNavigate();
+
   const { dispatch } = useContext(DataContext);
+
   const getProductsAPI = async () => {
     try {
       const response = await fetch("/api/products");
