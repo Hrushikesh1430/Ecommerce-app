@@ -22,17 +22,13 @@ const Products = () => {
 
   const { state, dispatch } = useContext(DataContext);
 
-  const getProducts = async () => {
+  const getProductsAPI = async () => {
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
       dispatch({ type: "INITIAL_FETCH", payLoad: data.products });
     } catch (e) {}
   };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   useEffect(() => {
     let finalList = [];

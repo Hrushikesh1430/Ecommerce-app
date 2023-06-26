@@ -35,6 +35,7 @@ function App() {
         <Route path="/cart" element={<ProtectedRoutes component={<Cart />} redirect={"login"} />} />
         <Route path="/userdetails" element={<ProtectedRoutes component={<Userdetails />} redirect={"login"} />} />
         <Route path="/checkout" element={<ProtectedRoutes component={<Checkout />} redirect={"login"} />} />
+        <Route path="*" element={<Products />} />
       </Routes>
     </div>
   );
