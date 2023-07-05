@@ -5,7 +5,7 @@ import { AuthContext } from "..";
 import { regexCheck } from "../Common/Utility";
 
 import styles from "./signup.module.css";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 
 const Signup = () => {
   const navigate = useNavigate();

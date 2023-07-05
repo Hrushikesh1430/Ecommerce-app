@@ -1,4 +1,4 @@
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import styles from "./checkout.module.css";
 
 import { Navigate } from "react-router-dom";

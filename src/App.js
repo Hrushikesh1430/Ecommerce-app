@@ -14,6 +14,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import { ProtectedRoutes } from "./Components/ProtectedRoutes";
 import { DataContext } from ".";
+import { Product } from "./pages/Product";
 
 function App() {
   const navigate = useNavigate();
@@ -43,11 +44,13 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/products" element={<Products />} />
+        <Route path="/product/:productId" element={<Product />} />
 
         <Route path="/wishlist" element={<ProtectedRoutes component={<WishList />} redirect={"login"} />} />
         <Route path="/cart" element={<ProtectedRoutes component={<Cart />} redirect={"login"} />} />
         <Route path="/userdetails" element={<ProtectedRoutes component={<Userdetails />} redirect={"login"} />} />
         <Route path="/checkout" element={<ProtectedRoutes component={<Checkout />} redirect={"login"} />} />
+
         <Route path="*" element={<Products />} />
       </Routes>
     </div>

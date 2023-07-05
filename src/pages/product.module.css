@@ -1,0 +1,25 @@
+.productParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productCard {
+  display: flex;
+}
+.productContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 30px;
+}

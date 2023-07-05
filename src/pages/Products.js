@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./products.module.css";
 
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import AllenSolly from "../assets/men/Allen_Solly_Jacket.jpg";
 
 import { AuthContext, CartContext, WishListContext } from "..";
@@ -42,6 +42,8 @@ const Products = () => {
     dispatch({ type: "SET_FILTERED_PRODUCTS", payLoad: finalList });
   }, [state.categoryCheck, state.sizeCheck, state.rating, state.sortOrder, state.price]);
 
+  console.log("filtered", state.filteredProducts);
+
   const filterByCategory = () => {
     let filteredbyCat = [];
     for (let i = 0; i < state.categoryCheck.length; i++) {
@@ -70,15 +72,12 @@ const Products = () => {
   };
   const sortbyPriceSlider = (array) => {
     let tempSortedPrice = array.filter(({ price }) => Number(price) <= Number(state.price));
-
-    console.log("tempSorted", tempSortedPrice);
     return tempSortedPrice.length > 0 ? tempSortedPrice : [];
   };
 
   const clearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS", payLoad: "" });
   };
-  console.log(state.price);
   return (
     <>
       <Navbar />
@@ -340,7 +339,7 @@ const Products = () => {
         <div className={styles.productContainer}>
           {state.filteredProducts.length > 0 ? (
             state.filteredProducts.map((item) => (
-              <div className={styles.productCard}>
+              <div className={styles.productCard} onClick={() => navigate(`/product/${item._id}`)}>
                 <img src={AllenSolly} alt={item.name} />
                 <p>{item.brand}</p>
                 <p>Category: {item.categoryName}</p>

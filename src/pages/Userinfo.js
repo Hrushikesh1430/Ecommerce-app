@@ -1,4 +1,4 @@
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 import styles from "./userDetails.module.css";
 import { AuthContext, DataContext } from "..";
 import { useContext, useEffect, useState } from "react";

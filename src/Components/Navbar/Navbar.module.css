@@ -1,0 +1,38 @@
+header,
+nav {
+  margin: 0px;
+}
+.navBarWrapper {
+  display: flex;
+  align-items: center;
+  padding: 18px 150px;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.navItems ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.navItems ul {
+  list-style-type: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.navItems .signIn {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.navItems .heart,
+.navItems .cart,
+.navItems .user {
+  height: 1.7rem;
+  width: 1.7rem;
+  color: #000000;
+}
+.navItems .heart:hover,
+.navItems .cart :hover {
+  color: var(--primary-color);
+}

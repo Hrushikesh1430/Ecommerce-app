@@ -5,7 +5,7 @@ import { AuthContext, CartContext, WishListContext } from "..";
 
 import styles from "./login.module.css";
 import { regexCheck } from "../Common/Utility";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 
 const Login = () => {
   const navigate = useNavigate();

@@ -1,6 +1,3 @@
-import { useContext } from "react";
-import { DataContext } from "../Context/DataContext";
-
 export const InitialState = {
   intialProductList: [],
   filteredProducts: [],
@@ -23,9 +20,10 @@ export const FilterReducer = (state, { type, payLoad }) => {
     case "FILTER_BY_CATEGORY":
       return {
         ...state,
-        categoryCheck: state.categoryCheck.includes(payLoad.value)
-          ? state.categoryCheck.filter((item) => item !== payLoad.value)
-          : [...state.categoryCheck, payLoad.value],
+        categoryCheck:
+          state.categoryCheck.includes(payLoad.value) && payLoad.checked === false
+            ? state.categoryCheck.filter((item) => item !== payLoad.value)
+            : [...state.categoryCheck, payLoad.value],
       };
     case "FILTER_BY_SIZE":
       return {
