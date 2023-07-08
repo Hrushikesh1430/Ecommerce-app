@@ -3,7 +3,7 @@ import Mockman from "mockman-js";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/Home/Home";
 import Products from "./pages/Products";
 import WishList from "./pages/WishList";
 import Cart from "./pages/Cart";

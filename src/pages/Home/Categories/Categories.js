@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./categories.module.css";
-import { DataContext, DataContextProvider } from "..";
+import { DataContext, DataContextProvider } from "../../..";
 import { useNavigate } from "react-router";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -32,7 +32,20 @@ const Categories = () => {
   }, []);
   return (
     <>
-      <div className={styles.categoryContainer}>
+      <section className={styles.categoryParent}>
+        <div className={styles.categoryWrapper}>
+          <div className={styles.categoryBox}>
+            <p>Men</p>
+          </div>
+          <div className={styles.categoryBox}>
+            <p>WomenMen</p>
+          </div>
+          <div className={styles.categoryBox}>
+            <p>Kids</p>
+          </div>
+        </div>
+      </section>
+      {/* <div className={styles.categoryContainer}>
         {categories.length > 0 && (
           <ul>
             {categories.map(({ categoryName, _id }) => (
@@ -42,7 +55,7 @@ const Categories = () => {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </>
   );
 };

@@ -1,11 +1,19 @@
 header,
 nav {
   margin: 0px;
+  background: #ffffff;
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 .navBarWrapper {
   display: flex;
   align-items: center;
-  padding: 18px 150px;
+  /* padding: 18px 150px; */
+  padding: 18px 12%;
   justify-content: space-between;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
