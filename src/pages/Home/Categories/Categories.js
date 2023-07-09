@@ -2,6 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./categories.module.css";
 import { DataContext, DataContextProvider } from "../../..";
 import { useNavigate } from "react-router";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+
+import Women from "../../../assets/CategorySection/Women.jpg";
+import Men from "../../../assets/CategorySection/Men.jpg";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { state, dispatch } = useContext(DataContext);
@@ -35,13 +39,40 @@ const Categories = () => {
       <section className={styles.categoryParent}>
         <div className={styles.categoryWrapper}>
           <div className={styles.categoryBox}>
-            <p>Men</p>
+            <img src={Men} alt="categroyMen" />
+            <div className={styles.categoryName}>
+              <div>
+                <span>Best Collection </span>
+                <span>For Men</span>
+              </div>
+              <button className={styles.shop}>
+                SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
+              </button>
+            </div>
           </div>
           <div className={styles.categoryBox}>
-            <p>WomenMen</p>
+            <img src={Women} alt="categroyWomen" />
+            <div className={styles.categoryName}>
+              <div>
+                <span>Best Collection </span>
+                <span>For Women</span>
+              </div>
+              <button className={styles.shop}>
+                SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
+              </button>
+            </div>
           </div>
           <div className={styles.categoryBox}>
-            <p>Kids</p>
+            <img src={Men} alt="categroyKids" />
+            <div className={styles.categoryName}>
+              <div>
+                <span>Best Collection </span>
+                <span>For Kids</span>
+              </div>
+              <button className={styles.shop}>
+                SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
