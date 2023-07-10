@@ -8,14 +8,18 @@ header {
   top: 0;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .navBarWrapper {
   display: flex;
   align-items: center;
   /* padding: 18px 150px; */
-  padding: 18px 12%;
+  padding: 18px 0;
   justify-content: space-between;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .navItems ul {

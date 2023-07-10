@@ -6,6 +6,8 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 
 import Women from "../../../assets/CategorySection/Women.jpg";
 import Men from "../../../assets/CategorySection/Men.jpg";
+import Kids from "../../../assets/CategorySection/Kids.jpg";
+
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const { state, dispatch } = useContext(DataContext);
@@ -51,11 +53,11 @@ const Categories = () => {
             </div>
           </div>
           <div className={styles.categoryBox}>
-            <img src={Women} alt="categroyWomen" />
+            <img src={Men} alt="categroyKids" />
             <div className={styles.categoryName}>
               <div>
                 <span>Best Collection </span>
-                <span>For Women</span>
+                <span>For Kids</span>
               </div>
               <button className={styles.shop}>
                 SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
@@ -63,11 +65,11 @@ const Categories = () => {
             </div>
           </div>
           <div className={styles.categoryBox}>
-            <img src={Men} alt="categroyKids" />
+            <img src={Women} alt="categroyWomen" />
             <div className={styles.categoryName}>
               <div>
                 <span>Best Collection </span>
-                <span>For Kids</span>
+                <span>For Women</span>
               </div>
               <button className={styles.shop}>
                 SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />

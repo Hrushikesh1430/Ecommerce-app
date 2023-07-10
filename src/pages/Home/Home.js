@@ -6,6 +6,7 @@ import { AuthContext, DataContext, WishListContext } from "../../index";
 import Navbar from "../../Components/Navbar/Navbar";
 import Hero from "./Hero/Hero";
 import Categories from "./Categories/Categories";
+import Features from "./Features/Features";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const Home = () => {
       <Navbar />
       <Hero />
       <Categories />
+      <Features />
       {/* <Categories /> */}
     </>
   );
