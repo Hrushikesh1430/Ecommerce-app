@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Hero from "./Hero/Hero";
 import Categories from "./Categories/Categories";
 import Features from "./Features/Features";
+import Footer from "./Footer/Footer";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const Home = () => {
       <Hero />
       <Categories />
       <Features />
-      {/* <Categories /> */}
+      <Footer />
     </>
   );
 };

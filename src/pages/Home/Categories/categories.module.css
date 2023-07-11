@@ -64,6 +64,11 @@
 .shop .mall {
   font-size: 1.2rem;
 }
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+  .categoryParent {
+    max-width: 960px;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .categoryWrapper {
     display: flex;

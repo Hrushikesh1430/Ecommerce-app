@@ -1,0 +1,85 @@
+.footerParent {
+  color: #fff;
+  background: #333333;
+}
+.footerWrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.footerLogo {
+  max-width: 500px;
+}
+.footerLogo img {
+  margin-bottom: 1.5rem;
+}
+.aboutText span {
+  font-size: 1rem;
+  /* max-width: 290px; */
+  line-height: 1.5rem;
+  color: #afafaf;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.aboutText ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+.aboutText li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.footerAddress span {
+  display: block;
+  font-size: 1rem;
+  /* max-width: 290px; */
+  line-height: 1.5rem;
+  color: #afafaf;
+  font-weight: 300;
+  display: block;
+}
+.footerAddress .storeTitle {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 1.7rem;
+  position: relative;
+  color: #fff;
+}
+.footerAddress :nth-child(4) {
+  margin-bottom: 2rem;
+}
+.addressWrapper {
+  max-width: 300px;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+  .footerWrapper {
+    max-width: 960px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .footerWrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    gap: 50px;
+  }
+  .footerLogo {
+    max-width: initial;
+  }
+}
