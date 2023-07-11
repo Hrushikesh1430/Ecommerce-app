@@ -64,4 +64,11 @@
   .featureParent {
     margin-bottom: 20%;
   }
+  .feature .icon {
+    font-size: 3.5rem;
+    padding: 10px;
+  }
+  .feature span:first-child {
+    font-size: 1.3rem;
+  }
 }

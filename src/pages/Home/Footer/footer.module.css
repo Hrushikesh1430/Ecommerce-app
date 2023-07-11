@@ -120,4 +120,13 @@
     background: #393939 none repeat scroll 0 0;
     padding: 30px 5%;
   }
+  .aboutText span {
+    font-size: 1rem;
+    max-width: initial;
+    line-height: 1.5rem;
+    color: #afafaf;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
 }
