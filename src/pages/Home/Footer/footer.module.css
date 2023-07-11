@@ -60,7 +60,31 @@
 .addressWrapper {
   max-width: 300px;
 }
-
+.aboutText li a {
+  color: #fff;
+}
+.aboutText li a :hover {
+  color: var(--primary-color);
+}
+.footerBox {
+  background: #393939 none repeat scroll 0 0;
+  padding: 25px 0 20px 0;
+}
+.footerBox span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #afafaf;
+}
+.footerBox .copy {
+  margin-right: 5px;
+}
+.footerBox .heart {
+  color: var(--primary-color);
+  margin-left: 10px;
+}
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .footerWrapper {
     max-width: 960px;
@@ -81,5 +105,19 @@
   }
   .footerLogo {
     max-width: initial;
+  }
+  .footerBox span {
+    font-size: 0.8rem;
+  }
+  .footerBox .copy {
+    margin-right: 3px;
+  }
+  .footerBox .heart {
+    color: var(--primary-color);
+    margin-left: 5px;
+  }
+  .footerBox {
+    background: #393939 none repeat scroll 0 0;
+    padding: 30px 5%;
   }
 }

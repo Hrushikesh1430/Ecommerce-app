@@ -121,9 +121,9 @@
   box-shadow: 0 5px 15px 0 rgba(153, 63, 107, 0.5);
 }
 @media only screen and (min-width: 1024px) and (max-width: 1299px) {
-  .heroRight img {
+  /* .heroRight img {
     height: 80%;
-  }
+  } */
   .offer {
     font-size: 1rem;
   }

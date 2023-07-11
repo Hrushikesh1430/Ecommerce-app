@@ -4,6 +4,8 @@ import FooterLogo from "../../../assets/Footer/logo-white.png";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import CopyrightIcon from "@mui/icons-material/Copyright";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import payment from "../../../assets/Footer/payment.png";
 
@@ -19,9 +21,21 @@ const Footer = () => {
               minim.
             </span>
             <ul>
-              <li>{<FacebookOutlinedIcon />}</li>
-              <li>{<TwitterIcon />}</li>
-              <li>{<InstagramIcon />}</li>
+              <li>
+                <a href="https://www.facebook.com/hrushikesh.tawde/" target="__blank">
+                  <FacebookOutlinedIcon />
+                </a>
+              </li>
+              <li>
+                <a href="http://www.linkedin.com/in/hrushikesh-tawde-0031511a4/" target="__blank">
+                  <TwitterIcon />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/hrushikesh.tawde/" target="__blank">
+                  <InstagramIcon />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -34,6 +48,16 @@ const Footer = () => {
             <img src={payment} alt="paymenticons" />
           </div>
         </div>
+      </div>
+      <div className={styles.footerBox}>
+        <span>
+          <span>
+            <CopyrightIcon className={styles.copy} />
+            2023 No Copyright.
+          </span>
+          <span>Feel free to make it yours!</span>
+          <FavoriteIcon className={styles.heart} />
+        </span>
       </div>
     </section>
   );
