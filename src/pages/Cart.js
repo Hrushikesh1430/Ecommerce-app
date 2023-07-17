@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 
-import styles from "./products.module.css";
+import styles from "./Products/products.module.css";
 
 import Navbar from "../Components/Navbar/Navbar";
 import AllenSolly from "../assets/men/Allen_Solly_Jacket.jpg";

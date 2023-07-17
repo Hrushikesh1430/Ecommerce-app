@@ -44,7 +44,6 @@ export const WishListContextProvider = ({ children }) => {
 
   const addToWishList = (product) => {
     userToken ? addWishListAPI(product) : navigate("/login");
-    // getWishListAPI();
   };
 
   const getWishListAPI = async (token = userToken) => {

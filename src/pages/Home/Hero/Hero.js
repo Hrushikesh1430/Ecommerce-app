@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PrevArrow from "../../../Components/Arrows/PrevArrow";
 import RightArrow from "../../../Components/Arrows/RightArrow";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const settings = {
@@ -25,6 +26,8 @@ const Hero = () => {
     prevArrow: <PrevArrow className={styles.leftHero} />,
     nextArrow: <RightArrow className={styles.rightHero} />,
   };
+
+  const navigate = useNavigate();
   return (
     <>
       <section className={styles.heroParent}>
@@ -38,7 +41,7 @@ const Hero = () => {
                     <span className={styles.subText}>SALE UPTO</span>
                     <span className={styles.saleDiscount}>50% OFF</span>
                   </div>
-                  <button className={styles.shop}>
+                  <button className={styles.shop} onClick={() => navigate("/products")}>
                     SHOP NOW <LocalMallOutlinedIcon />
                   </button>
                 </div>

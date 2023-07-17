@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { Home } from "./pages/Home/Home";
-import Products from "./pages/Products";
+import Products from "./pages/Products/Products";
 import WishList from "./pages/WishList";
 import Cart from "./pages/Cart";
 // import { UserDetails } from "./pages/userDetails";
@@ -19,7 +19,7 @@ import { Product } from "./pages/Product";
 function App() {
   const navigate = useNavigate();
   const { checkLogin } = useContext(AuthContext);
-  const { dispatch } = useContext(DataContext);
+  const { dispatch, setAppDevice } = useContext(DataContext);
 
   const getProductsAPI = async () => {
     try {
@@ -32,6 +32,17 @@ function App() {
   useEffect(() => {
     checkLogin();
     getProductsAPI();
+
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setAppDevice(1);
+      } else {
+        setAppDevice(0);
+      }
+    }
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
   }, []);
 
   return (

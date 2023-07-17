@@ -47,6 +47,8 @@ export const DataContextProvider = ({ children }) => {
 
   const deliveryCharges = 100;
 
+  const [AppDevice, setAppDevice] = useState(0);
+
   return (
     <DataContext.Provider
       value={{
@@ -57,6 +59,8 @@ export const DataContextProvider = ({ children }) => {
         deliveryCharges,
         state,
         dispatch,
+        AppDevice,
+        setAppDevice,
       }}
     >
       {children}

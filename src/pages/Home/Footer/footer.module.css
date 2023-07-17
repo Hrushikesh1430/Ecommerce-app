@@ -75,15 +75,17 @@
   align-items: center;
   justify-content: center;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #afafaf;
 }
 .footerBox .copy {
   margin-right: 5px;
+  font-size: 0.9rem;
 }
 .footerBox .heart {
   color: var(--primary-color);
   margin-left: 10px;
+  font-size: 0.9rem;
 }
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .footerWrapper {
