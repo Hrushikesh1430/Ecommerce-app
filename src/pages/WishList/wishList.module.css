@@ -1,0 +1,206 @@
+.WishListContainer {
+  margin-top: 12%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  margin-bottom: 10%;
+}
+.add {
+  text-align: center;
+}
+.title {
+  font-size: 1.2rem;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.28;
+  letter-spacing: normal;
+  text-align: left;
+  color: #58595b;
+  margin-bottom: 30px;
+  font-weight: 600;
+  display: block;
+}
+.wishListEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empty {
+  width: 30%;
+  margin-bottom: 25px;
+}
+.wishListInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.lonelyText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #282c3f;
+  -webkit-font-smoothing: antialiased;
+}
+.addText {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #58595b;
+}
+.productContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: initial;
+  gap: 20px;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+  padding-bottom: 8px;
+}
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.productImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.productCard img {
+  width: 50%;
+  aspect-ratio: 2/3;
+}
+.productInfo {
+  padding: 10px;
+}
+
+.review {
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+}
+.average {
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 6px;
+  color: #9f9e9e;
+}
+.starContainer .star {
+  font-size: 1.2rem;
+  color: #9f9e9e;
+}
+.starContainer .starfill {
+  color: #ffde00;
+}
+.brand {
+  color: #878787;
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 10px;
+}
+.name {
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  display: block;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.productInfo .productPrice {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #212121;
+  margin-bottom: 20px;
+}
+.discount {
+  font-size: 1rem;
+  margin-left: 10px;
+  text-decoration: line-through;
+  color: #9f9e9e;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+  .WishListContainer {
+    max-width: 960px;
+  }
+  .productCard {
+    width: 300px;
+  }
+  .productContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .WishListContainer {
+    margin-top: 130px;
+    padding: 0 5%;
+    margin-bottom: 15%;
+  }
+  .empty {
+    width: 70%;
+    margin-bottom: 25px;
+  }
+  .wishListInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .lonelyText {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #282c3f;
+    -webkit-font-smoothing: antialiased;
+  }
+  .addText {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #58595b;
+  }
+  .productCard {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    padding-bottom: 8px;
+  }
+  .productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}

@@ -16,7 +16,7 @@ const Navbar = () => {
     <header>
       <nav className={styles.navBarWrapper}>
         <div className={styles.brand}>
-          <img src={PcLogo} alt="logo" />
+          <img src={PcLogo} alt="logo" onClick={() => navigate("/products")} />
         </div>
         <SearchBar />
         <div className={styles.navItems}>
