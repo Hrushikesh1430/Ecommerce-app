@@ -45,7 +45,9 @@ export const DataContextProvider = ({ children }) => {
 
   const [checkoutTotal, setcheckOutTotal] = useState(0);
 
-  const deliveryCharges = 100;
+  const deliveryCharges = 300;
+
+  const discount = 500;
 
   const [AppDevice, setAppDevice] = useState(0);
 
@@ -57,6 +59,7 @@ export const DataContextProvider = ({ children }) => {
         checkoutTotal,
         setcheckOutTotal,
         deliveryCharges,
+        discount,
         state,
         dispatch,
         AppDevice,

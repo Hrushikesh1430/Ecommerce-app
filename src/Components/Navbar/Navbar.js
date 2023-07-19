@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
@@ -29,7 +29,7 @@ const Navbar = () => {
             <li>
               {isloggedIn ? (
                 <Link to="/userdetails">
-                  <AccountCircleOutlinedIcon className={styles.user} />
+                  <AccountCircleOutlinedIcon className={styles.user} sx={{ stroke: "transparent", strokeWidth: 1 }} />
                 </Link>
               ) : (
                 <Link to="/login" className={styles.signIn}>
@@ -39,12 +39,12 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/wishlist">
-                <FavoriteBorderOutlinedIcon className={styles.heart} />
+                <FavoriteIcon className={styles.heart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
               </Link>
             </li>
             <li>
               <Link to="/cart">
-                <ShoppingCartOutlinedIcon className={styles.cart} />
+                <ShoppingCartOutlinedIcon className={styles.cart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
               </Link>
             </li>
             {isloggedIn && (

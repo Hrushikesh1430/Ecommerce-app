@@ -6,7 +6,7 @@ import styles from "./cart.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 
-import { AuthContext, CartContext } from "../..";
+import { CartContext, DataContext } from "../..";
 import Footer from "../Home/Footer/Footer";
 
 const WishList = () => {
@@ -14,9 +14,13 @@ const WishList = () => {
 
   const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI } = useContext(CartContext);
 
+  const { discount, deliveryCharges } = useContext(DataContext);
+
   const quantityHandler = (productId, action, quantity) => {
     action === "decrement" && quantity === 1 ? deleteCartHandler(productId) : cartQuantityAPI(productId, action);
   };
+
+  const checkoutTotal = totalCartAmount + (totalCartAmount < 1500 && deliveryCharges) - (totalCartAmount > 2000 && discount);
 
   return (
     <>
@@ -30,53 +34,75 @@ const WishList = () => {
                   <div>
                     <img src={AllenSolly} alt={item.name} />
                   </div>
-                  <div>
-                    <p>{item.brand}</p>
-                    <p className={styles.name}>{item.name}</p>
-                    <p className={styles.price}>₹ {item.price}</p>
-                    <div className={styles.buttonContainer}>
-                      <button className={styles.addCart} onClick={() => deleteCartHandler(item._id)}>
-                        Remove from Cart
-                      </button>
+                  <div className={styles.cardInfo}>
+                    <div className={styles.cardInfoWrapper}>
+                      <div>
+                        <span className={styles.name}>{item.name}</span>
+                        <span className={styles.brand}>{item.brand}</span>
+                      </div>
+                      <div>
+                        <span className={styles.price}>₹ {item.price}</span>
+                      </div>
                     </div>
+
                     <div className={styles.quantityContainer}>
                       <button
                         onClick={(e) => {
                           quantityHandler(item._id, "increment", item.qty);
                         }}
+                        className={styles.quantity}
                       >
                         +
                       </button>
-                      <input type="text" value={item.qty} className={styles.quantity} disabled={true} />
-                      <button onClick={(e) => quantityHandler(item._id, "decrement", item.qty)}>-</button>
+                      <input type="text" value={item.qty} disabled={true} className={styles.quantityInput} />
+                      <button
+                        onClick={(e) => quantityHandler(item._id, "decrement", item.qty)}
+                        className={`${styles.quantity} ${item.qty < 2 && styles.disable} ${styles.decrease}`}
+                        disabled={item.qty < 2 && true}
+                      >
+                        -
+                      </button>
+                    </div>
+                    <div className={styles.bottom}>
+                      <button className={styles.remove} onClick={() => deleteCartHandler(item._id)}>
+                        Remove
+                      </button>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
             <div className={styles.cartBillingContainer}>
-              <h3>Checkout Bill</h3>
+              <span className={styles.billTitle}>Billing Details</span>
               <div className={styles.cartBillList}>
-                <div className={styles.billHeader}>
-                  <span>Item Name</span>
-                  <span>Amount</span>
+                <div className={styles.cartBillItem}>
+                  <span>Cart Total</span>
+                  <span>₹ {totalCartAmount}</span>
                 </div>
 
-                {cart.map((item) => (
+                <div className={styles.cartBillItem}>
+                  <span>Discount</span>
+                  <span className={styles.discount}>{totalCartAmount > 2000 ? `- ₹ ${discount}` : "-"}</span>
+                </div>
+                <div className={styles.cartBillItem}>
+                  <span>Delivery Charges</span>
+                  <span className={totalCartAmount > 1500 && styles.discount}>{totalCartAmount > 1500 ? "Free" : `₹ ${deliveryCharges}`}</span>
+                </div>
+                {/* {cart.map((item) => (
                   <div className={styles.cartBillItem}>
-                    <span className={styles.billItemName}>
-                      {item.name} - {`(${item.qty})`}
-                    </span>
+                    <span className={styles.billItemName}>{item.name}</span>
+                    <span className={styles.billquantity}> {`(${item.qty})`}</span>
+
                     <span className={styles.billItemPrice}>{item.price}</span>
                   </div>
-                ))}
+                ))} */}
                 <div className={styles.total}>
-                  <span>Total : </span>
-                  <span>{totalCartAmount}</span>
+                  <span>Total Amount</span>
+                  <span>₹ {checkoutTotal}</span>
                 </div>
               </div>
               <button className={styles.checkout} onClick={() => navigate("/checkout")}>
-                Checkout
+                PLACE ORDER
               </button>
             </div>
           </>

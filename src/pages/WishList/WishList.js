@@ -68,15 +68,6 @@ const WishList = () => {
                   </div>
                   <div className={styles.buttonContainer}>
                     <button className={styles.addCart}>Add to Cart</button>
-                    {/* {wishList.find((wishListItem) => wishListItem._id === item._id) ? (
-                      <button className={styles.addWishList} onClick={() => deleteWishList(item._id)}>
-                        Remove from WishList
-                      </button>
-                    ) : (
-                      <button className={styles.addWishList} onClick={() => addToWishList(item)}>
-                        Add to WishList
-                      </button>
-                    )} */}
                   </div>
                 </div>
               </div>
@@ -84,7 +75,7 @@ const WishList = () => {
           </div>
         ) : (
           <div className={styles.wishListEmpty}>
-            <img src={EmptyWishList} alt="empty" className={styles.empty} />
+            <img src={EmptyWishList} alt="empty" className={styles.empty} loading="lazy" />
             <div className={styles.wishListInfo}>
               <span className={styles.lonelyText}>Your wishlist is lonely and looking for love.</span>
               <span className={styles.addText}>Add products to your wishlist, review them anytime and easily move to cart.</span>
