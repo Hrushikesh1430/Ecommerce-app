@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 1200;
 }
 .modalContent {
   position: relative;

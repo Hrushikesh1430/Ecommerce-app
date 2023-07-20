@@ -1,10 +1,11 @@
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../../Components/Navbar/Navbar";
 import styles from "./userDetails.module.css";
-import { AuthContext, DataContext } from "..";
+import { AuthContext, DataContext } from "../..";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { AddressForm } from "../Components/AddressForm";
-import { CustomModal } from "../Components/CustomModal";
+import { AddressForm } from "../../Components/AddressForm";
+import { CustomModal } from "../../Components/CustomModal";
+import Footer from "../Home/Footer/Footer";
 
 export const Userdetails = () => {
   const { user } = useContext(AuthContext);
@@ -30,6 +31,51 @@ export const Userdetails = () => {
       </CustomModal>
 
       <div className={styles.userDetailsParent}>
+        <div className={styles.userDetailsContainer}>
+          <div className={styles.userInfo}>
+            <span className={styles.addressTitle}>USER INFO</span>
+            <span>
+              Name : {user.firstName} {user.lastName}
+            </span>
+            <span>Email : {user.email}</span>
+          </div>
+          <div className={styles.addressList}>
+            <span className={styles.addressTitle}>ADDRESSES</span>
+            <div className={styles.addressContainer}>
+              <div
+                className={`${styles.addressItem} ${styles.add}`}
+                onClick={() => {
+                  setAddressModal(true);
+                  setEdit(false);
+                }}
+              >
+                <div className={`${styles.addressInfo}`}>
+                  <span className={styles.addIcon}>+</span>
+                  <span>Add New Address</span>
+                </div>
+              </div>
+              {address.map(
+                (item, index) =>
+                  item.userId === user.id && (
+                    <div className={styles.addressItem}>
+                      <div className={styles.addressInfo}>
+                        <span className={styles.username}>{item.name}</span>
+                        <span>{item.residence}</span>
+                        <span>{item.area}</span>
+                        <span>{`${item.city}-${item.pincode}`}</span>
+                        <span>Mobile : {item.phone}</span>
+                      </div>
+                    </div>
+                  )
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+
+      {/* <div className={styles.userDetailsParent}>
         <div className={styles.userDetailsContainer}>
           <div className={styles.userInfoContainer}>
             <div className={styles.userInfo}>
@@ -75,7 +121,7 @@ export const Userdetails = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

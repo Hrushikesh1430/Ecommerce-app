@@ -124,6 +124,7 @@
   border-top: 1px solid hsla(216, 3%, 66%, 0.22);
   display: flex;
   justify-content: flex-end;
+  gap: 20px;
 }
 .remove {
   font-size: 0.9rem;
@@ -312,6 +313,8 @@
     display: flex;
     justify-content: center;
     padding-bottom: 30px;
+    gap: 10px;
+    flex-direction: column;
   }
   .cartBillList {
     margin-top: 30px;
@@ -336,5 +339,9 @@
   }
   .cartBillingContainer {
     margin-bottom: 50px;
+  }
+  .cartImage {
+    display: flex;
+    align-items: center;
   }
 }

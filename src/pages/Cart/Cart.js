@@ -6,13 +6,14 @@ import styles from "./cart.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 
-import { CartContext, DataContext } from "../..";
+import { CartContext, DataContext, WishListContext } from "../..";
 import Footer from "../Home/Footer/Footer";
 
 const WishList = () => {
   const navigate = useNavigate();
 
   const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI } = useContext(CartContext);
+  const { wishList, addToWishList } = useContext(WishListContext);
 
   const { discount, deliveryCharges } = useContext(DataContext);
 
@@ -31,7 +32,7 @@ const WishList = () => {
             <div className={styles.cartContainer}>
               {cart.map((item) => (
                 <div className={styles.cartCard}>
-                  <div>
+                  <div className={styles.cartImage}>
                     <img src={AllenSolly} alt={item.name} />
                   </div>
                   <div className={styles.cardInfo}>
@@ -64,6 +65,15 @@ const WishList = () => {
                       </button>
                     </div>
                     <div className={styles.bottom}>
+                      {wishList.find((wishListItem) => wishListItem._id === item._id) ? (
+                        <button className={styles.remove} onClick={() => navigate("/wishlist")}>
+                          Go to WishList
+                        </button>
+                      ) : (
+                        <button className={styles.remove} onClick={() => addToWishList(item)}>
+                          Add to WishList
+                        </button>
+                      )}
                       <button className={styles.remove} onClick={() => deleteCartHandler(item._id)}>
                         Remove
                       </button>
@@ -75,6 +85,13 @@ const WishList = () => {
             <div className={styles.cartBillingContainer}>
               <span className={styles.billTitle}>Billing Details</span>
               <div className={styles.cartBillList}>
+                {cart.map((item) => (
+                  <div className={styles.cartBillItem}>
+                    <span className={styles.billItemName}>{`${item.name} (${item.qty})`}</span>
+
+                    <span className={styles.billItemPrice}>{item.price}</span>
+                  </div>
+                ))}
                 <div className={styles.cartBillItem}>
                   <span>Cart Total</span>
                   <span>₹ {totalCartAmount}</span>
@@ -88,14 +105,6 @@ const WishList = () => {
                   <span>Delivery Charges</span>
                   <span className={totalCartAmount > 1500 && styles.discount}>{totalCartAmount > 1500 ? "Free" : `₹ ${deliveryCharges}`}</span>
                 </div>
-                {/* {cart.map((item) => (
-                  <div className={styles.cartBillItem}>
-                    <span className={styles.billItemName}>{item.name}</span>
-                    <span className={styles.billquantity}> {`(${item.qty})`}</span>
-
-                    <span className={styles.billItemPrice}>{item.price}</span>
-                  </div>
-                ))} */}
                 <div className={styles.total}>
                   <span>Total Amount</span>
                   <span>₹ {checkoutTotal}</span>

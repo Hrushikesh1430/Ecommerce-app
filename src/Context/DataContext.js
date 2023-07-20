@@ -31,6 +31,17 @@ export const DataContextProvider = ({ children }) => {
     },
     {
       id: uuid(),
+      userId: "2",
+      name: "Akshaya Tawde",
+      phone: "9969535222",
+      residence: "47/1430 Vishwadham Co-op Housing Society",
+      area: "Nehru Nagar Kurla East",
+      city: "Mumbai",
+      state: "Maharashtra",
+      pincode: "400024",
+    },
+    {
+      id: uuid(),
       userId: "1",
       name: "Aadarsh Balika",
       phone: "8104460774",

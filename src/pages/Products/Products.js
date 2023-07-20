@@ -6,7 +6,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 
 import { AuthContext, CartContext, WishListContext } from "../..";
-import { DataContext, DataContextProvider } from "../../Context/DataContext";
+import { DataContext } from "../../Context/DataContext";
 
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -380,8 +380,8 @@ const Products = () => {
                 <div className={styles.productCard} onClick={() => navigate(`/product/${item._id}`)}>
                   <div className={styles.heart}>
                     <FavoriteIcon
-                      className={`${styles.heartIcon} ${index % 2 === 0 && styles.fill}`}
-                      sx={{ stroke: index % 2 === 0 ? "transparent" : "#000000", strokeWidth: 1 }}
+                      className={`${styles.heartIcon} ${wishList.find((wishListItem) => wishListItem._id === item._id) && styles.fill}`}
+                      sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#000000", strokeWidth: 1 }}
                       onClick={(e) => {
                         e.stopPropagation();
                         addToWishList(item);
