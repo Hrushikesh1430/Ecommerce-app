@@ -389,7 +389,7 @@ const Products = () => {
                     />
                   </div>
                   <div className={styles.productImage}>
-                    <img src={AllenSolly} alt={item.name} />
+                    <img src={item.image} alt={item.name} />
                   </div>
                   <div className={styles.productInfo}>
                     <div className={styles.review}>

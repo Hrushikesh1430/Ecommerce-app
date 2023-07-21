@@ -64,6 +64,18 @@ export const Userdetails = () => {
                         <span>{item.area}</span>
                         <span>{`${item.city}-${item.pincode}`}</span>
                         <span>Mobile : {item.phone}</span>
+                        <div className={styles.buttonContainer}>
+                          <button
+                            onClick={() => {
+                              setAddressModal(true);
+                              setEdit(true);
+                              setCurrentAddress(item);
+                            }}
+                          >
+                            Edit
+                          </button>
+                          <button onClick={() => deleteAddressHandler(item)}>Delete</button>
+                        </div>
                       </div>
                     </div>
                   )

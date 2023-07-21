@@ -13,18 +13,32 @@
 }
 .modalContent {
   position: relative;
-  width: 500px;
+  min-width: 500px;
+  max-width: 500px;
   background-color: #ffffff;
   padding: 10px 20px;
+  border-radius: 10px;
 }
 
 .modalClose {
-  position: relative;
-  left: -10px;
+  position: absolute;
+  right: 10px;
 }
 .modalClose button {
   color: #212529;
-  background-color: transparent;
+  background: #ccc;
   border-color: transparent;
   border-radius: 50%;
+  width: 25px;
+  height: 26px;
+  padding: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .modalContent {
+    position: relative;
+    width: 340px;
+    min-width: 300px;
+    max-width: 300px;
+  }
 }
