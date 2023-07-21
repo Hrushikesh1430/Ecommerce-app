@@ -5,7 +5,6 @@ import styles from "./wishList.module.css";
 
 import Navbar from "../../Components/Navbar/Navbar";
 
-import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 import EmptyWishList from "../../assets/Wishlist/empty.png";
 
 import { AuthContext, CartContext, WishListContext } from "../..";
@@ -56,7 +55,7 @@ const WishList = () => {
                   />
                 </div>
                 <div className={styles.productImage}>
-                  <img src={AllenSolly} alt={item.name} />
+                  <img src={item.image} alt={item.name} />
                 </div>
                 <div className={styles.productInfo}>
                   <span className={styles.brand}>{item.brand}</span>

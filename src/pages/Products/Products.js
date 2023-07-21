@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./products.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
-import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 
 import { AuthContext, CartContext, WishListContext } from "../..";
 import { DataContext } from "../../Context/DataContext";

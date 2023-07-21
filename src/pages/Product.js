@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CartContext, DataContext, WishListContext } from "..";
 import Navbar from "../Components/Navbar/Navbar";
 import styles from "./product.module.css";
-import AllenSolly from "../assets/men/Allen_Solly_Jacket.jpg";
 
 export const Product = () => {
   const navigate = useNavigate();
@@ -22,9 +21,7 @@ export const Product = () => {
         <div className={styles.productParent}>
           <div className={styles.productContainer}>
             <div className={styles.productCard}>
-              <div className={styles.productImage}>
-                <img src={AllenSolly} alt="product_image" />
-              </div>
+              <div className={styles.productImage}>{/* <img src={} alt="product_image" /> */}</div>
               <div className={styles.productInfo}>
                 <p>{product.brand}</p>
                 <p>{product.name}</p>

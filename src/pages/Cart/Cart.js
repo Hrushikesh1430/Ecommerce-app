@@ -4,7 +4,6 @@ import { useNavigate, Navigate } from "react-router-dom";
 import styles from "./cart.module.css";
 
 import Navbar from "../../Components/Navbar/Navbar";
-import AllenSolly from "../../assets/men/Allen_Solly_Jacket.jpg";
 
 import { CartContext, DataContext, WishListContext } from "../..";
 import Footer from "../Home/Footer/Footer";
@@ -33,7 +32,7 @@ const WishList = () => {
               {cart.map((item) => (
                 <div className={styles.cartCard}>
                   <div className={styles.cartImage}>
-                    <img src={AllenSolly} alt={item.name} />
+                    <img src={item.image} alt={item.name} />
                   </div>
                   <div className={styles.cardInfo}>
                     <div className={styles.cardInfoWrapper}>
