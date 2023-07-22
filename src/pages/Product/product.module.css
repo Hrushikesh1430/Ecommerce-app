@@ -85,14 +85,10 @@
   margin-bottom: 25px;
 }
 .name {
-  text-overflow: ellipsis;
   font-size: 1.2rem;
   display: block;
   max-width: 250px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
   margin-bottom: 25px;
   font-weight: 600;
 }
@@ -149,8 +145,16 @@
   .productParent {
     max-width: 960px;
   }
+  .name {
+    max-width: 300px;
+    white-space: initial;
+  }
 }
 @media only screen and (max-width: 1024px) {
+  .name {
+    max-width: 300px;
+    white-space: initial;
+  }
   .productParent {
     margin-top: 130px;
     padding: 0 5%;
