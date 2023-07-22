@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 
-import { AuthContext, CartContext, WishListContext } from "..";
+import { AuthContext, CartContext, WishListContext } from "../..";
 
 import styles from "./login.module.css";
-import { regexCheck } from "../Common/Utility";
-import Navbar from "../Components/Navbar/Navbar";
+import { regexCheck } from "../../Common/Utility";
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../Home/Footer/Footer";
+
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,6 +16,8 @@ const Login = () => {
   const { isloggedIn, setUserToken, setIsLoggedIn, setUser } = useContext(AuthContext);
   const { getWishListAPI } = useContext(WishListContext);
   const { getCartItemsAPI } = useContext(CartContext);
+
+  const [passwordType, setPasswordType] = useState("password");
 
   const [formValues, setFormValues] = useState({
     email: {
@@ -24,6 +29,13 @@ const Login = () => {
       error: "",
     },
   });
+  const changeVisibility = () => {
+    if (passwordType === "text") {
+      setPasswordType("password");
+    } else {
+      setPasswordType("text");
+    }
+  };
   const errorCheck = (fieldName, value) => {
     if (fieldName === "email") {
       let regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
@@ -147,46 +159,58 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.login}>
-        <form onSubmit={submitLoginHandler}>
+      <div className={styles.loginParent}>
+        <div className={styles.login}>
           <h3>Login</h3>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            className={`${styles.email} ${formValues.email.error !== "" && styles.error}`}
-            id="signupemail"
-            name="email"
-            onChange={(e) => {
-              setFormValues((formValues) => ({
-                ...formValues,
-                email: { ...formValues.email, value: e.target.value },
-              }));
-              errorCheck("email", e.target.value);
-            }}
-          />
-          {formValues.email.error !== "" && <span className={styles.warning}>{formValues.email.error}</span>}
-          <label htmlFor="password">Password</label>
-          <input
-            type={"password"}
-            className={`${styles.password} ${formValues.password.error !== "" && styles.error}`}
-            id="signupassword"
-            name="password"
-            onChange={(e) => {
-              setFormValues((formValues) => ({
-                ...formValues,
-                password: { ...formValues.password, value: e.target.value },
-              }));
-              errorCheck("password", e.target.value);
-            }}
-          />
-          {formValues.password.error !== "" && <span className={styles.warning}>{formValues.password.error}</span>}
-          <button type="submit">Sign in</button>
-          <span>Dont't have an account?</span>
-          <p className={styles.signupText} onClick={() => navigate("/signup")}>
-            Signup
-          </p>
-        </form>
+          <form onSubmit={submitLoginHandler}>
+            <div className={styles.formWrapper}>
+              <div>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className={`${styles.email} ${formValues.email.error !== "" && styles.error}`}
+                  id="signupemail"
+                  name="email"
+                  onChange={(e) => {
+                    setFormValues((formValues) => ({
+                      ...formValues,
+                      email: { ...formValues.email, value: e.target.value },
+                    }));
+                    errorCheck("email", e.target.value);
+                  }}
+                />
+                {formValues.email.error !== "" && <span className={styles.warning}>{formValues.email.error}</span>}
+              </div>
+              <div>
+                <label htmlFor="password">Password</label>
+                <div className={styles.passwordWrapper}>
+                  <input
+                    type={passwordType}
+                    className={`${styles.password} ${formValues.password.error !== "" && styles.error}`}
+                    id="signupassword"
+                    name="password"
+                    onChange={(e) => {
+                      setFormValues((formValues) => ({
+                        ...formValues,
+                        password: { ...formValues.password, value: e.target.value },
+                      }));
+                      errorCheck("password", e.target.value);
+                    }}
+                  />
+                  <RemoveRedEyeOutlinedIcon className={styles.eye} onClick={() => changeVisibility()} />
+                </div>
+                {formValues.password.error !== "" && <span className={styles.warning}>{formValues.password.error}</span>}
+              </div>
+            </div>
+            <button type="submit">Sign in</button>
+            <span className={styles.account}>Dont't have an account?</span>
+            <p className={styles.signupText} onClick={() => navigate("/signup")}>
+              Signup
+            </p>
+          </form>
+        </div>
       </div>
+      <Footer />
     </>
   );
 };

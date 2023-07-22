@@ -1,8 +1,8 @@
 import "./App.css";
 import Mockman from "mockman-js";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 import { Home } from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
 import WishList from "./pages/WishList/WishList";

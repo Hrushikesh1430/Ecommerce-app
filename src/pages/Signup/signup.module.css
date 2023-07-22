@@ -1,0 +1,135 @@
+.signupParent {
+  margin-top: 12%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8%;
+}
+.signup {
+  width: 400px;
+  background: #f1f1f2;
+  padding: 50px 80px;
+  border-radius: 0.25rem;
+}
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.signup h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signup h3::after {
+  display: block;
+  content: "";
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin-top: 12px;
+}
+.signup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.signup input {
+  margin-bottom: 10px;
+}
+.signup .firstName,
+.signup .lastName,
+.signup .email,
+.signup .password {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none;
+}
+.passwordWrapper {
+  position: relative;
+}
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  color: #9ba0a5;
+  cursor: pointer;
+}
+.signup :focus {
+  border: 1px solid blue;
+  outline: none;
+}
+.signup form {
+  display: flex;
+  flex-direction: column;
+}
+.signup button {
+  cursor: pointer;
+  margin-top: 20px;
+}
+.signup .error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+.signup .warning {
+  font-size: 0.8rem;
+  color: #dc3545;
+  margin-bottom: 6px;
+  display: block;
+}
+.signup .showPasswordLabel {
+  display: inline;
+}
+.registered {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.signup .loginText {
+  display: inline;
+  text-align: center;
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-size: 1.1rem;
+}
+.signup .loginText:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+  .signupParent {
+    max-width: 960px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .signupParent {
+    margin-top: 130px;
+    padding: 0 5%;
+    margin-bottom: 15%;
+  }
+  .signup {
+    width: 300px;
+    background: #f1f1f2;
+    padding: 50px 50px;
+    border-radius: 0.25rem;
+  }
+}
