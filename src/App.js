@@ -14,7 +14,8 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import { ProtectedRoutes } from "./Components/ProtectedRoutes";
 import { DataContext } from ".";
-import { Product } from "./pages/Product";
+import { Product } from "./pages/Product/Product";
+import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 
 function App() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mockman" element={<Mockman />} />

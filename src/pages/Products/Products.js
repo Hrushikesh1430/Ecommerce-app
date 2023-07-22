@@ -22,7 +22,7 @@ const Products = () => {
 
   const { userToken } = useContext(AuthContext);
 
-  const { wishList, addToWishList } = useContext(WishListContext);
+  const { wishList, addToWishList, deleteWishList } = useContext(WishListContext);
 
   const { cart, addCartHandler } = useContext(CartContext);
 
@@ -383,7 +383,7 @@ const Products = () => {
                       sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#000000", strokeWidth: 1 }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        addToWishList(item);
+                        wishList.find((wishListItem) => wishListItem._id === item._id) ? deleteWishList(item._id) : addToWishList(item);
                       }}
                     />
                   </div>

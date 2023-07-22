@@ -9,8 +9,6 @@ import EmptyWishList from "../../assets/Wishlist/empty.png";
 
 import { AuthContext, CartContext, WishListContext } from "../..";
 
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import StarIcon from "@mui/icons-material/Star";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 import Footer from "../Home/Footer/Footer";
@@ -19,21 +17,6 @@ const WishList = () => {
   const navigate = useNavigate();
 
   const { wishList, addToWishList, deleteWishList, getWishListAPI } = useContext(WishListContext);
-  const ReviewStars = ({ rating }) => {
-    const starArr = [1, 2, 3, 4, 5];
-    let userRating = parseInt(rating);
-    return (
-      <>
-        <div className={styles.starContainer}>
-          {starArr.map(() => {
-            userRating = userRating - 1;
-            return <StarIcon className={`${styles.star} ${userRating > -1 && styles.starfill}`} />;
-          })}
-        </div>
-        <span className={styles.average}>({rating} Average review)</span>
-      </>
-    );
-  };
 
   return (
     <>

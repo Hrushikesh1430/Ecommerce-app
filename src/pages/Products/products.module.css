@@ -31,6 +31,7 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: relative;
   padding-bottom: 8px;
+  cursor: pointer;
 }
 .heart {
   position: absolute;
@@ -50,20 +51,29 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 5px;
 }
 .productCard img {
   width: 80%;
   aspect-ratio: 2/3;
+  margin-top: 10px;
 }
 .productInfo {
   padding: 10px;
 }
+.addCart {
+  font-size: 1rem;
+  line-height: initial;
+  padding: initial;
+  height: 30px;
+  width: 150px;
+}
 
 .review {
-  padding: 20px 0px;
+  padding: 0px 0px;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 .average {
   font-size: 14px;
