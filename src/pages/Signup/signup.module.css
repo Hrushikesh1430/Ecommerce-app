@@ -114,6 +114,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+:focus {
+  outline: none; /* no outline - for most browsers */
+}
 
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .signupParent {
