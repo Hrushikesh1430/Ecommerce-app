@@ -8,6 +8,7 @@ import { validate } from "uuid";
 import Footer from "../Home/Footer/Footer";
 import { CustomModal } from "../../Components/CustomModal";
 import { AddressForm } from "../../Components/AddressForm";
+import { alertTitleClasses } from "@mui/material";
 
 export const Checkout = () => {
   const { user } = useContext(AuthContext);
@@ -23,11 +24,16 @@ export const Checkout = () => {
     setCurrentAddress(address.find((item) => item.id === value));
   };
 
-  // useEffect(() => {
-  //   setCurrentAddress(address.find((item) => item.userId === user.id));
-  // }, []);
-
-  const validateCheckout = () => {};
+  const validateCheckout = () => {
+    const addresses = address.filter((item, index) => item.userId === user.id);
+    if (currentAddress === "" && addresses.length === 0) {
+      alert("Please add an address to checkout");
+    } else if (currentAddress === "" && addresses.length > 0) {
+      alert("Please select an address to checkout");
+    } else {
+      alert("Proceed to payment");
+    }
+  };
   if (!cart.length > 0) {
     return <Navigate to="/products" replace />;
   }
