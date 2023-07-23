@@ -22,13 +22,15 @@ const Categories = () => {
   };
 
   const categoryHandler = (category) => {
-    dispatch({
-      type: "FILTER_BY_CATEGORY",
-      payLoad: {
-        checked: true,
-        value: category,
-      },
-    });
+    if (!state.categoryCheck.includes(category)) {
+      dispatch({
+        type: "FILTER_BY_CATEGORY",
+        payLoad: {
+          checked: true,
+          value: category,
+        },
+      });
+    }
 
     navigate("/products");
   };
@@ -47,7 +49,7 @@ const Categories = () => {
                 <span>Best Collection </span>
                 <span>For Men</span>
               </div>
-              <button className={styles.shop}>
+              <button className={styles.shop} onClick={() => categoryHandler("Men")}>
                 SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
               </button>
             </div>
@@ -59,7 +61,7 @@ const Categories = () => {
                 <span>Best Collection </span>
                 <span>For Kids</span>
               </div>
-              <button className={styles.shop}>
+              <button className={styles.shop} onClick={() => categoryHandler("Kids")}>
                 SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
               </button>
             </div>
@@ -71,7 +73,7 @@ const Categories = () => {
                 <span>Best Collection </span>
                 <span>For Women</span>
               </div>
-              <button className={styles.shop}>
+              <button className={styles.shop} onClick={() => categoryHandler("Women")}>
                 SHOP NOW <LocalMallOutlinedIcon className={styles.mall} />
               </button>
             </div>

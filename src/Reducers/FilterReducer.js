@@ -59,7 +59,12 @@ export const FilterReducer = (state, { type, payLoad }) => {
     case "SEARCH_FILTER":
       return {
         ...state,
-        searchList: payLoad.length === 0 ? [] : state.intialProductList.filter(({ brand }) => brand.toLowerCase().includes(payLoad)).slice(0, 7),
+        searchList:
+          payLoad.length === 0
+            ? []
+            : state.intialProductList
+                .filter(({ brand, name }) => brand.toLowerCase().includes(payLoad) || name.toLowerCase().includes(payLoad))
+                .slice(0, 7),
       };
     case "SET_FILTERED_PRODUCTS":
       return { ...state, filteredProducts: payLoad };

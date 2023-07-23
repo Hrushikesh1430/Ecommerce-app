@@ -6,6 +6,8 @@ import { AuthContext, CartContext, DataContext } from "../..";
 import { useContext, useEffect, useState } from "react";
 import { validate } from "uuid";
 import Footer from "../Home/Footer/Footer";
+import { CustomModal } from "../../Components/CustomModal";
+import { AddressForm } from "../../Components/AddressForm";
 
 export const Checkout = () => {
   const { user } = useContext(AuthContext);
@@ -13,6 +15,7 @@ export const Checkout = () => {
   const { address, deliveryCharges, discount } = useContext(DataContext);
 
   const { cart, totalCartAmount } = useContext(CartContext);
+  const [addressModal, setAddressModal] = useState(false);
 
   const [currentAddress, setCurrentAddress] = useState("");
 
@@ -20,9 +23,9 @@ export const Checkout = () => {
     setCurrentAddress(address.find((item) => item.id === value));
   };
 
-  useEffect(() => {
-    setCurrentAddress(address.find((item) => item.userId === user.id));
-  }, []);
+  // useEffect(() => {
+  //   setCurrentAddress(address.find((item) => item.userId === user.id));
+  // }, []);
 
   const validateCheckout = () => {};
   if (!cart.length > 0) {
@@ -31,12 +34,26 @@ export const Checkout = () => {
   const checkoutTotal = totalCartAmount + (totalCartAmount < 1500 && deliveryCharges) - (totalCartAmount > 2000 && discount);
   return (
     <>
+      <CustomModal onClose={() => setAddressModal(false)} modalOpen={addressModal}>
+        <AddressForm edit={false} addressValue={currentAddress} setAddressModal={setAddressModal} />
+      </CustomModal>
       <Navbar />
       <section className={styles.checkoutContainer}>
         <div className={styles.checkoutParent}>
           <div className={styles.addressList}>
             <span className={styles.addressTitle}>Delivery To</span>
             <div className={styles.addressContainer}>
+              <div
+                className={`${styles.addressItem} ${styles.add}`}
+                onClick={() => {
+                  setAddressModal(true);
+                }}
+              >
+                <div className={`${styles.addressInfo}`}>
+                  <span className={styles.addIcon}>+</span>
+                  <span>Add New Address</span>
+                </div>
+              </div>
               {address.map(
                 (item, index) =>
                   item.userId === user.id && (

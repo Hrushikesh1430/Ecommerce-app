@@ -34,14 +34,14 @@
 
 .SearchBox {
   width: 450px;
-  border: 2px solid #212529;
   position: absolute;
   left: 0px;
   z-index: 1000;
   overflow-y: auto;
   top: 40px;
-  background-color: #cbcbcb;
-  max-height: 200px;
+  max-height: 450px;
+  border: 1px solid hsla(216, 3%, 66%, 0.22);
+  background-color: #fff;
 }
 .searchInput {
   display: flex;
@@ -50,7 +50,24 @@
 }
 .searchItem {
   padding: 10px;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 1px solid hsla(216, 3%, 66%, 0.22);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.brand {
+  color: #878787;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.searchInfo span {
+  display: block;
+}
+.searchImage {
+  width: 120px;
+  aspect-ratio: 2/3;
 }
 
 .closeSearch {
@@ -61,4 +78,28 @@
   top: 7px;
   font-size: 1.6rem;
   color: var(--primary-color);
+}
+.notFound {
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .SearchBox {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    z-index: 1000;
+    overflow-y: auto;
+    top: 40px;
+    max-height: 400px;
+  }
 }

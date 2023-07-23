@@ -4,13 +4,16 @@ import FavoriteIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
-import { AuthContext } from "../..";
+import { AuthContext, CartContext, DataContext, WishListContext } from "../..";
 import { SearchBar } from "../SearchBar/SearchBar";
 import PcLogo from "../../assets/Navbar/logo.png";
 
 import styles from "./Navbar.module.css";
 const Navbar = () => {
   const navigate = useNavigate();
+  const { AppDevice } = useContext(DataContext);
+  const { wishList } = useContext(WishListContext);
+  const { cart } = useContext(CartContext);
   const { isloggedIn, setUserToken, setUser, setIsLoggedIn } = useContext(AuthContext);
   return (
     <header>
@@ -18,7 +21,7 @@ const Navbar = () => {
         <div className={styles.brand}>
           <img src={PcLogo} alt="logo" onClick={() => navigate("/products")} />
         </div>
-        <SearchBar />
+        {AppDevice === 1 && <SearchBar />}
         <div className={styles.navItems}>
           {/* <Link to="/">Home</Link> */}
           {/* <Link to="/products">Products</Link> */}
@@ -39,12 +42,18 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/wishlist">
-                <FavoriteIcon className={styles.heart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                <div className={styles.iconWrapper}>
+                  <FavoriteIcon className={styles.heart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                  {wishList.length > 0 && <div className={styles.quantity}>{wishList.length}</div>}
+                </div>
               </Link>
             </li>
             <li>
               <Link to="/cart">
-                <ShoppingCartOutlinedIcon className={styles.cart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                <div className={styles.iconWrapper}>
+                  <ShoppingCartOutlinedIcon className={styles.cart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                  {cart.length > 0 && <div className={styles.quantity}>{cart.length}</div>}
+                </div>
               </Link>
             </li>
             {isloggedIn && (
@@ -58,6 +67,7 @@ const Navbar = () => {
                     setIsLoggedIn(false);
                     navigate("/login");
                   }}
+                  className={styles.logout}
                 >
                   Logout
                 </button>
@@ -66,6 +76,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
+      {AppDevice === 0 && <SearchBar />}
     </header>
   );
 };

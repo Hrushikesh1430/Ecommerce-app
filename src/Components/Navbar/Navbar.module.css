@@ -17,7 +17,6 @@ header {
   padding: 18px 0;
   justify-content: space-between;
   max-width: 1200px;
-  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -51,8 +50,54 @@ header {
 .brand {
   cursor: pointer;
 }
+.iconWrapper {
+  position: relative;
+}
+.quantity {
+  font-size: 11px;
+  font-weight: 700;
+  position: absolute;
+  z-index: 2;
+  top: -8px;
+  right: -10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #fb5d5d;
+  width: 21px;
+  height: 21px;
+}
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .navBarWrapper {
     max-width: 960px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  header {
+    padding: 0 5%;
+    margin-bottom: 15%;
+  }
+  .navBarWrapper {
+    padding-bottom: 5px;
+  }
+  .logout {
+    font-size: 0.8rem;
+    line-height: normal;
+    padding: 7px 9px;
+  }
+  .navItems .heart,
+  .navItems .cart,
+  .navItems .user {
+    height: 1em;
+    width: 1em;
+    color: #000000;
+  }
+  .navItems ul {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 }

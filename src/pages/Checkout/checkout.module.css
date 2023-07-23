@@ -69,6 +69,7 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  min-width: 720px;
 }
 .addressTitle {
   display: block;
@@ -90,6 +91,35 @@
   flex-direction: column;
   gap: 8px;
   font-size: 1rem;
+}
+.addAddress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.add {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.add .addressInfo {
+  align-items: center;
+  font-weight: 600;
+}
+
+.addIcon {
+  background-color: #ccc;
+  color: #000000;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 1.4rem;
+  cursor: pointer;
 }
 .username {
   font-weight: 600;
@@ -124,10 +154,13 @@
   .addressItem {
     width: 250px;
   }
+  .addressContainer {
+    min-width: 300px;
+  }
 }
 @media only screen and (max-width: 1024px) {
   .checkoutContainer {
-    margin-top: 130px;
+    margin-top: 170px;
     padding: 0 5%;
   }
   .addressContainer {
@@ -135,6 +168,7 @@
     gap: 20px;
     flex-direction: column;
     justify-content: center;
+    min-width: initial;
   }
   .addressItem {
     width: initial;
