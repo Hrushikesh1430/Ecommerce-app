@@ -66,9 +66,8 @@
   color: #9ba0a5;
   cursor: pointer;
 }
-.login :focus {
-  border: 1px solid blue;
-  outline: none;
+.login button:focus {
+  -webkit-tap-highlight-color: transparent;
 }
 .login form {
   display: flex;
