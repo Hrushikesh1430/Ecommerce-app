@@ -15,8 +15,9 @@ export const Product = () => {
   const { productId } = useParams();
 
   const { state } = useContext(DataContext);
-  const { cart, addCartHandler } = useContext(CartContext);
-  const { addToWishList, wishList, deleteWishList } = useContext(WishListContext);
+  const { wishList, addToWishList, deleteWishList, wishButtonDisabled, wishButtonId } = useContext(WishListContext);
+
+  const { cart, addCartHandler, cartButtonDisabled, cartButtonId } = useContext(CartContext);
 
   const product = state.intialProductList.find(({ _id }) => productId === _id);
   const ReviewStars = ({ rating }) => {
@@ -43,17 +44,19 @@ export const Product = () => {
             <div className={styles.productCard} onClick={() => navigate(`/product/${product._id}`)}>
               <div className={styles.productImage}>
                 <div className={styles.heart}>
-                  <FavoriteIcon
-                    className={`${styles.heartIcon} ${wishList.find((wishListproduct) => wishListproduct._id === product._id) && styles.fill}`}
-                    sx={{
-                      stroke: wishList.find((wishListproduct) => wishListproduct._id === product._id) ? "transparent" : "#000000",
-                      strokeWidth: 1,
-                    }}
+                  <button
                     onClick={(e) => {
                       e.stopPropagation();
                       wishList.find((wishListItem) => wishListItem._id === product._id) ? deleteWishList(product._id) : addToWishList(product);
                     }}
-                  />
+                    key={product._id}
+                    disabled={wishButtonId === product._id ? wishButtonDisabled : false}
+                  >
+                    <FavoriteIcon
+                      className={`${styles.heartIcon} ${wishList.find((wishListItem) => wishListItem._id === product._id) && styles.fill}`}
+                      sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === product._id) ? "transparent" : "#000000", strokeWidth: 1 }}
+                    />
+                  </button>
                 </div>
                 <img src={product.image} alt={product.name} />
               </div>
@@ -75,7 +78,7 @@ export const Product = () => {
                 <ReviewStars rating={product.rating} />
               </div>
               <div className={styles.buttonContainer}>
-                {cart.find((cartproduct) => cartproduct._id === product._id) ? (
+                {cart.find((cartItem) => cartItem._id === product._id) ? (
                   <button
                     className={styles.addCart}
                     onClick={(e) => {
@@ -92,6 +95,8 @@ export const Product = () => {
                       e.stopPropagation();
                       addCartHandler(product);
                     }}
+                    key={product._id}
+                    disabled={cartButtonId === product._id ? cartButtonDisabled : false}
                   >
                     Add to Cart
                   </button>

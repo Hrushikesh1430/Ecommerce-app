@@ -28,10 +28,14 @@
   width: 300px;
   overflow: hidden;
   margin-bottom: 30px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   position: relative;
   padding-bottom: 8px;
   cursor: pointer;
+}
+.productCard:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .heart {
   position: absolute;
