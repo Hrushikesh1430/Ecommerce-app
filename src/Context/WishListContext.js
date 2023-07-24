@@ -11,8 +11,12 @@ export const WishListContextProvider = ({ children }) => {
   const { userToken } = useContext(AuthContext);
 
   const [wishList, setWishList] = useState([]);
+  const [wishButtonDisabled, setWishButtonDisabled] = useState(false);
+  const [wishButtonId, setWishButtonId] = useState(0);
 
   const addWishListAPI = async (product) => {
+    setWishButtonId(product._id);
+    setWishButtonDisabled(true);
     const url = "/api/user/wishlist";
     const config = {
       method: "POST",
@@ -25,9 +29,14 @@ export const WishListContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setWishList(data.wishlist);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setWishButtonDisabled(false);
+    }
   };
   const deleteWishListAPI = async (productId) => {
+    setWishButtonId(productId);
+    setWishButtonDisabled(true);
     const url = `/api/user/wishlist/${productId}`;
     const config = {
       method: "DELETE",
@@ -39,7 +48,10 @@ export const WishListContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setWishList(data.wishlist);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setWishButtonDisabled(false);
+    }
   };
 
   const addToWishList = (product) => {
@@ -74,6 +86,8 @@ export const WishListContextProvider = ({ children }) => {
         addWishListAPI,
         getWishListAPI,
         deleteWishList,
+        wishButtonDisabled,
+        wishButtonId,
       }}
     >
       {children}

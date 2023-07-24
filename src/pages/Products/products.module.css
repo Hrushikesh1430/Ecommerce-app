@@ -39,9 +39,18 @@
   top: 10px;
   z-index: 2;
 }
+.heart button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: transparent;
+  cursor: pointer;
+}
+.heart button:disabled {
+  cursor: not-allowed;
+}
 .heart .heartIcon {
   color: #fff;
-  cursor: pointer;
   font-size: 1.7rem;
 }
 .heart .fill {
@@ -67,6 +76,11 @@
   padding: initial;
   height: 30px;
   width: 150px;
+}
+.addCart:disabled {
+  cursor: not-allowed;
+  background: #b3b3b3;
+  color: #000000;
 }
 
 .review {

@@ -11,8 +11,9 @@ import Footer from "../Home/Footer/Footer";
 const WishList = () => {
   const navigate = useNavigate();
 
-  const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI } = useContext(CartContext);
-  const { wishList, addToWishList } = useContext(WishListContext);
+  const { cart, deleteCartHandler, totalCartAmount, cartQuantityAPI, cartButtonDisabled, cartButtonId, quantityDisabled, quantityId } =
+    useContext(CartContext);
+  const { wishList, addToWishList, wishButtonDisabled, wishButtonId } = useContext(WishListContext);
 
   const { discount, deliveryCharges } = useContext(DataContext);
 
@@ -51,6 +52,7 @@ const WishList = () => {
                           quantityHandler(item._id, "increment", item.qty);
                         }}
                         className={styles.quantity}
+                        disabled={quantityId === item._id ? quantityDisabled : false}
                       >
                         +
                       </button>
@@ -58,7 +60,7 @@ const WishList = () => {
                       <button
                         onClick={(e) => quantityHandler(item._id, "decrement", item.qty)}
                         className={`${styles.quantity} ${item.qty < 2 && styles.disable} ${styles.decrease}`}
-                        disabled={item.qty < 2 && true}
+                        disabled={quantityId === item._id ? quantityDisabled : item.qty < 2 ? true : false}
                       >
                         -
                       </button>
@@ -69,11 +71,19 @@ const WishList = () => {
                           Go to WishList
                         </button>
                       ) : (
-                        <button className={styles.remove} onClick={() => addToWishList(item)}>
+                        <button
+                          className={styles.remove}
+                          onClick={() => addToWishList(item)}
+                          disabled={wishButtonId === item._id ? wishButtonDisabled : false}
+                        >
                           Add to WishList
                         </button>
                       )}
-                      <button className={styles.remove} onClick={() => deleteCartHandler(item._id)}>
+                      <button
+                        className={styles.remove}
+                        onClick={() => deleteCartHandler(item._id)}
+                        disabled={cartButtonId === item._id ? cartButtonDisabled : false}
+                      >
                         Remove
                       </button>
                     </div>

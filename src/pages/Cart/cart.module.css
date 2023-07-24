@@ -82,6 +82,10 @@
   text-align: center;
   line-height: 1;
 }
+.quantity:disabled {
+  cursor: not-allowed;
+}
+
 .quantityInput {
   display: inline-block;
   width: 100px;
@@ -130,6 +134,11 @@
   font-size: 0.9rem;
   border: 1px solid #ebebeb98;
   padding: 5px 20px;
+}
+.remove:disabled {
+  cursor: not-allowed;
+  background: #b3b3b3;
+  color: #000000;
 }
 .cartEmpty {
   display: flex;
@@ -208,6 +217,7 @@
   line-height: 1.2;
   color: #282c3f;
 }
+
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
   .cartParent {
     max-width: 960px;

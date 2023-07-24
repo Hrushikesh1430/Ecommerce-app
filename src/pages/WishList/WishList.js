@@ -16,7 +16,9 @@ import Footer from "../Home/Footer/Footer";
 const WishList = () => {
   const navigate = useNavigate();
 
-  const { wishList, addToWishList, deleteWishList, getWishListAPI } = useContext(WishListContext);
+  const { addCartHandler, cart, cartButtonDisabled, cartButtonId } = useContext(CartContext);
+
+  const { wishList, addToWishList, deleteWishList, getWishListAPI, wishButtonDisabled, wishButtonId } = useContext(WishListContext);
 
   return (
     <>
@@ -29,13 +31,15 @@ const WishList = () => {
             {wishList.map((item, index) => (
               <div className={styles.productCard} onClick={() => navigate(`/product/${item._id}`)}>
                 <div className={styles.close}>
-                  <CloseOutlinedIcon
-                    sx={{ stroke: "transparent", strokeWidth: 1 }}
+                  <button
                     onClick={(e) => {
                       e.stopPropagation();
                       deleteWishList(item._id);
                     }}
-                  />
+                    disabled={wishButtonId === item._id ? wishButtonDisabled : false}
+                  >
+                    <CloseOutlinedIcon sx={{ stroke: "transparent", strokeWidth: 1 }} className={styles.closeIcon} />
+                  </button>
                 </div>
                 <div className={styles.productImage}>
                   <img src={item.image} alt={item.name} />
@@ -49,7 +53,29 @@ const WishList = () => {
                     <span className={styles.discount}>₹ 8000</span>
                   </div>
                   <div className={styles.buttonContainer}>
-                    <button className={styles.addCart}>Add to Cart</button>
+                    {cart.find((cartItem) => cartItem._id === item._id) ? (
+                      <button
+                        className={styles.addCart}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate("/cart");
+                        }}
+                      >
+                        Go to Cart
+                      </button>
+                    ) : (
+                      <button
+                        className={styles.addCart}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addCartHandler(item);
+                        }}
+                        key={item._id}
+                        disabled={cartButtonId === item._id ? cartButtonDisabled : false}
+                      >
+                        Add to Cart
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

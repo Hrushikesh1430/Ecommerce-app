@@ -11,6 +11,10 @@ export const CartContextProvider = ({ children }) => {
   const { userToken } = useContext(AuthContext);
 
   const [cart, setCart] = useState([]);
+  const [cartButtonDisabled, setCartButtonDisabled] = useState(false);
+  const [cartButtonId, setCartButtonId] = useState(0);
+  const [quantityDisabled, setQuantityDisabled] = useState(false);
+  const [quantityId, setQuantityId] = useState(0);
   const [totalCartAmount, settotalCartAmount] = useState(0);
 
   useEffect(() => {
@@ -33,10 +37,14 @@ export const CartContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setCart(data.cart);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+    }
   };
 
   const addCartAPI = async (product) => {
+    setCartButtonId(product._id);
+    setCartButtonDisabled(true);
     const url = "/api/user/cart";
     const config = {
       method: "POST",
@@ -49,10 +57,15 @@ export const CartContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setCart(data.cart);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setCartButtonDisabled(false);
+    }
   };
 
   const deleteCartAPI = async (productId) => {
+    setCartButtonId(productId);
+    setCartButtonDisabled(true);
     const url = `/api/user/cart/${productId}`;
     const config = {
       method: "DELETE",
@@ -65,10 +78,15 @@ export const CartContextProvider = ({ children }) => {
       const data = await response.json();
       console.log(data);
       setCart(data.cart);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setCartButtonDisabled(false);
+    }
   };
 
   const cartQuantityAPI = async (productId, action) => {
+    setQuantityId(productId);
+    setQuantityDisabled(true);
     const APIbody = {
       action: {
         type: action,
@@ -87,7 +105,11 @@ export const CartContextProvider = ({ children }) => {
       const data = await response.json();
       console.log(data);
       setCart(data.cart);
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      setQuantityDisabled(false);
+      setQuantityId(0);
+    }
   };
 
   const addCartHandler = (product) => {
@@ -106,9 +128,13 @@ export const CartContextProvider = ({ children }) => {
         addCartHandler,
         totalCartAmount,
         settotalCartAmount,
+        cartButtonDisabled,
         getCartItemsAPI,
         deleteCartHandler,
         cartQuantityAPI,
+        cartButtonId,
+        quantityDisabled,
+        quantityId,
       }}
     >
       {children}

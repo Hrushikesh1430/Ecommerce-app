@@ -22,9 +22,9 @@ const Products = () => {
 
   const { userToken } = useContext(AuthContext);
 
-  const { wishList, addToWishList, deleteWishList } = useContext(WishListContext);
+  const { wishList, addToWishList, deleteWishList, wishButtonDisabled, wishButtonId } = useContext(WishListContext);
 
-  const { cart, addCartHandler } = useContext(CartContext);
+  const { cart, addCartHandler, cartButtonDisabled, cartButtonId } = useContext(CartContext);
 
   const { state, dispatch, AppDevice } = useContext(DataContext);
 
@@ -47,9 +47,9 @@ const Products = () => {
     return (
       <>
         <div className={styles.starContainer}>
-          {starArr.map(() => {
+          {starArr.map((index) => {
             userRating = userRating - 1;
-            return <StarIcon className={`${styles.star} ${userRating > -1 && styles.starfill}`} />;
+            return <StarIcon className={`${styles.star} ${userRating > -1 && styles.starfill}`} key={index} />;
           })}
         </div>
         <span className={styles.average}>({rating} Average review)</span>
@@ -359,6 +359,8 @@ const Products = () => {
     dispatch({ type: "CLEAR_FILTERS", payLoad: "" });
   };
 
+  console.log(cartButtonDisabled);
+
   return (
     <>
       <Navbar />
@@ -376,23 +378,28 @@ const Products = () => {
           <div className={styles.productContainer}>
             {state.filteredProducts.length > 0 ? (
               state.filteredProducts.map((item, index) => (
-                <div className={styles.productCard} onClick={() => navigate(`/product/${item._id}`)}>
+                <div className={styles.productCard} onClick={() => navigate(`/product/${item._id}`)} key={item._id}>
                   <div className={styles.heart}>
-                    <FavoriteIcon
-                      className={`${styles.heartIcon} ${wishList.find((wishListItem) => wishListItem._id === item._id) && styles.fill}`}
-                      sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#000000", strokeWidth: 1 }}
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         wishList.find((wishListItem) => wishListItem._id === item._id) ? deleteWishList(item._id) : addToWishList(item);
                       }}
-                    />
+                      key={item._id}
+                      disabled={wishButtonId === item._id ? wishButtonDisabled : false}
+                    >
+                      <FavoriteIcon
+                        className={`${styles.heartIcon} ${wishList.find((wishListItem) => wishListItem._id === item._id) && styles.fill}`}
+                        sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#000000", strokeWidth: 1 }}
+                      />
+                    </button>
                   </div>
                   <div className={styles.productImage}>
                     <img src={item.image} alt={item.name} />
                   </div>
                   <div className={styles.productInfo}>
                     <div className={styles.review}>
-                      <ReviewStars rating={item.rating} />
+                      <ReviewStars rating={item.rating} key={item._id} />
                     </div>
                     <span className={styles.brand}>{item.brand}</span>
                     {/* <p>Category: {item.categoryName}</p> */}
@@ -423,6 +430,8 @@ const Products = () => {
                             e.stopPropagation();
                             addCartHandler(item);
                           }}
+                          key={item._id}
+                          disabled={cartButtonId === item._id ? cartButtonDisabled : false}
                         >
                           Add to Cart
                         </button>
