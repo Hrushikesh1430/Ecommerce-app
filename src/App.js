@@ -10,24 +10,38 @@ import Cart from "./pages/Cart/Cart";
 // import { UserDetails } from "./pages/userDetails";
 import { Userdetails } from "./pages/UserInfo/Userinfo";
 import { Checkout } from "./pages/Checkout/Checkout";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import { ProtectedRoutes } from "./Components/ProtectedRoutes";
 import { DataContext } from ".";
 import { Product } from "./pages/Product/Product";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import Loader from "./Components/Loader/Loader";
 
 function App() {
   const navigate = useNavigate();
   const { checkLogin } = useContext(AuthContext);
   const { dispatch, setAppDevice } = useContext(DataContext);
 
+  const [loading, setLoading] = useState(true);
+
   const getProductsAPI = async () => {
+    const loaderElement = document.querySelector(".loaderBackground");
+
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
       dispatch({ type: "INITIAL_FETCH", payLoad: data.products });
-    } catch (e) {}
+    } catch (e) {
+    } finally {
+      if (loaderElement) {
+        document.querySelector(".loaderBackground").style.display = "none";
+        var loader = document.querySelector("body").classList;
+        if (loader.contains("loaderDefault")) loader.remove("loaderDefault");
+        document.querySelector("html").style.overflow = "";
+        setLoading(false);
+      }
+    }
   };
 
   useEffect(() => {
@@ -46,9 +60,14 @@ function App() {
     window.addEventListener("resize", handleResize);
   }, []);
 
+  // if (loading) {
+  //   return null;
+  // }
+
   return (
     <div className="App">
       <ScrollToTop />
+      {/* <Loader /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mockman" element={<Mockman />} />

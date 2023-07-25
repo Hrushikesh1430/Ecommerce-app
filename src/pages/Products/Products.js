@@ -359,8 +359,6 @@ const Products = () => {
     dispatch({ type: "CLEAR_FILTERS", payLoad: "" });
   };
 
-  console.log(cartButtonDisabled);
-
   return (
     <>
       <Navbar />

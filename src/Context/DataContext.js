@@ -53,8 +53,8 @@ export const DataContextProvider = ({ children }) => {
     },
   ]);
   const [state, dispatch] = useReducer(FilterReducer, InitialState);
-
   const [checkoutTotal, setcheckOutTotal] = useState(0);
+  const [loader, setLoader] = useState(true);
 
   const deliveryCharges = 300;
 
@@ -75,6 +75,8 @@ export const DataContextProvider = ({ children }) => {
         dispatch,
         AppDevice,
         setAppDevice,
+        loader,
+        setLoader,
       }}
     >
       {children}

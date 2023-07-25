@@ -7,6 +7,7 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import Women from "../../../assets/CategorySection/Women.jpg";
 import Men from "../../../assets/CategorySection/Men.jpg";
 import Kids from "../../../assets/CategorySection/Kids.jpg";
+import Loader from "../../../Components/Loader/Loader";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);

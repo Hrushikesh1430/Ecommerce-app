@@ -5,20 +5,14 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/mockman-js@latest/dist/style.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/mockman-js@latest/dist/style.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,9 +23,74 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      .loaderDefault {
+        overflow: hidden;
+      }
+      .loader {
+        border: 2px solid;
+        border-color: transparent #fff;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+      .loader::after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border: 30px solid;
+        border-color: transparent var(--primary-color);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .loaderParent {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+      .loaderText {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+      .loaderBackground {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: #000000eb;
+        z-index: 2000;
+        display: none;
+      }
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body class="loaderDefault">
+    <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
+    <div class="loaderBackground">
+      <div class="loaderParent">
+        <span class="loader"></span>
+        <span class="loaderText">Loading</span>
+      </div>
+    </div>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -43,5 +102,9 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script defer="defer">
+      document.querySelector("html").style.overflow = "hidden";
+      document.querySelector(".loaderBackground").style.display = "flex";
+    </script>
   </body>
 </html>
