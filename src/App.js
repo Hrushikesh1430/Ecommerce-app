@@ -19,6 +19,9 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import { HideLoader } from "./Common/Utility";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const navigate = useNavigate();
   const { checkLogin } = useContext(AuthContext);
@@ -58,6 +61,7 @@ function App() {
   return (
     <div className="App">
       <ScrollToTop />
+      <ToastContainer toastStyle={{ backgroundColor: "#fb5d5d;" }} />
       {/* <Loader /> */}
       <Routes>
         <Route path="/" element={<Home />} />

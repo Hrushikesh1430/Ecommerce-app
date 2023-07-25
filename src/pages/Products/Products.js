@@ -14,6 +14,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import Footer from "../Home/Footer/Footer";
 
 import Drawer from "@mui/material/Drawer";
+import { toast } from "react-toastify";
 
 const Products = () => {
   const navigate = useNavigate();

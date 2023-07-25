@@ -3,6 +3,8 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
+import { toast } from "react-toastify";
+
 export const WishListContext = createContext();
 
 export const WishListContextProvider = ({ children }) => {
@@ -29,6 +31,15 @@ export const WishListContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setWishList(data.wishlist);
+      toast.success(`Added to Wishlist`, {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } catch (e) {
     } finally {
       setWishButtonDisabled(false);
@@ -48,6 +59,15 @@ export const WishListContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setWishList(data.wishlist);
+      toast.warning(`Removed from Wishlist`, {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } catch (e) {
     } finally {
       setWishButtonDisabled(false);

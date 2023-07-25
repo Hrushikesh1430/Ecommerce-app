@@ -9,6 +9,8 @@ import { regexCheck } from "../../Common/Utility";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../Home/Footer/Footer";
 
+import { toast } from "react-toastify";
+
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
 const Login = () => {
@@ -137,7 +139,17 @@ const Login = () => {
           setUser(foundUser);
           getWishListAPI(encodedToken);
           getCartItemsAPI(encodedToken);
+
           console.log(location);
+          toast.success("Successfully logged In", {
+            position: "bottom-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
           navigate(location?.state?.from?.pathname);
         } else {
           setFormValues((formValues) => ({
@@ -147,6 +159,15 @@ const Login = () => {
               error: errors[0],
             },
           }));
+          toast.error(`These credentials do not match our records. Please try again`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
         }
       } catch (error) {
       } finally {
@@ -155,9 +176,9 @@ const Login = () => {
   };
 
   // Redirect to userdetails if logged in
-  if (isloggedIn) {
-    return <Navigate to="/userdetails" replace />;
-  }
+  // if (isloggedIn) {
+  //   return <Navigate to="/userdetails" replace />;
+  // }
 
   return (
     <>

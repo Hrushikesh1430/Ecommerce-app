@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "..";
 
+import { toast } from "react-toastify";
+
 export const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
@@ -57,6 +59,15 @@ export const CartContextProvider = ({ children }) => {
       const response = await fetch(url, config);
       const data = await response.json();
       setCart(data.cart);
+      toast.success(`Added to Cart`, {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } catch (e) {
     } finally {
       setCartButtonDisabled(false);
@@ -78,6 +89,15 @@ export const CartContextProvider = ({ children }) => {
       const data = await response.json();
       console.log(data);
       setCart(data.cart);
+      toast.warning(`Removed from Cart`, {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } catch (e) {
     } finally {
       setCartButtonDisabled(false);

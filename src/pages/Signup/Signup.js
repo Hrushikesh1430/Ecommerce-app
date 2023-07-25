@@ -10,6 +10,8 @@ import Footer from "../Home/Footer/Footer";
 
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
+import { toast } from "react-toastify";
+
 const Signup = () => {
   const navigate = useNavigate();
   const { checkLogin, isloggedIn } = useContext(AuthContext);
@@ -175,8 +177,7 @@ const Signup = () => {
     const errorFor = (validationError) => {
       for (const key in formValues) {
         if (formValues[key].error !== "") {
-          validationError = true;
-          break;
+          return true;
         }
       }
       return validationError;
@@ -191,7 +192,9 @@ const Signup = () => {
     validationError =
       firstName.value === "" || lastName.value === "" || email.value === "" || password.value === "" || confirmPassword.value === "" ? true : false;
 
-    !validationError && errorFor(validationError);
+    if (!validationError) {
+      validationError = errorFor(validationError);
+    }
 
     if (!validationError) {
       const data = {
@@ -218,9 +221,26 @@ const Signup = () => {
         console.log(data);
         if (!errors) {
           // localStorage.setItem("userToken", encodedToken);
-          navigate("/login");
+          toast.success(`User Created successfully`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
+          // navigate("/login");
         } else {
-          alert("User already exists");
+          toast.error(`User Already Exists. Please try with some other credentials`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
         }
       } catch (error) {
       } finally {
