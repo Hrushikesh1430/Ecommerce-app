@@ -17,30 +17,21 @@ import { DataContext } from ".";
 import { Product } from "./pages/Product/Product";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
+import { HideLoader } from "./Common/Utility";
 
 function App() {
   const navigate = useNavigate();
   const { checkLogin } = useContext(AuthContext);
   const { dispatch, setAppDevice } = useContext(DataContext);
 
-  const [loading, setLoading] = useState(true);
-
   const getProductsAPI = async () => {
-    const loaderElement = document.querySelector(".loaderBackground");
-
     try {
       const response = await fetch("/api/products");
       const data = await response.json();
       dispatch({ type: "INITIAL_FETCH", payLoad: data.products });
     } catch (e) {
     } finally {
-      if (loaderElement) {
-        document.querySelector(".loaderBackground").style.display = "none";
-        var loader = document.querySelector("body").classList;
-        if (loader.contains("loaderDefault")) loader.remove("loaderDefault");
-        document.querySelector("html").style.overflow = "";
-        setLoading(false);
-      }
+      HideLoader();
     }
   };
 
@@ -70,7 +61,7 @@ function App() {
       {/* <Loader /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/mockman" element={<Mockman />} />
+        {/* <Route path="/mockman" element={<Mockman />} /> */}
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />

@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { DataContext } from "../../Context/DataContext";
+// import { useContext } from "react";
+// import { DataContext } from "../../Context/DataContext";
 import styles from "./loader.module.css";
-import Backdrop from "@mui/material/Backdrop";
+// import Backdrop from "@mui/material/Backdrop";
 
 const Loader = () => {
-  const { loader } = useContext(DataContext);
+  // const { loader } = useContext(DataContext);
   return (
     <>
       <div className={styles.loaderBackground}>

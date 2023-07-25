@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { AuthContext, CartContext, WishListContext } from "../..";
 
@@ -16,6 +17,7 @@ const Login = () => {
   const { isloggedIn, setUserToken, setIsLoggedIn, setUser } = useContext(AuthContext);
   const { getWishListAPI } = useContext(WishListContext);
   const { getCartItemsAPI } = useContext(CartContext);
+  const location = useLocation();
 
   const [passwordType, setPasswordType] = useState("password");
 
@@ -135,7 +137,8 @@ const Login = () => {
           setUser(foundUser);
           getWishListAPI(encodedToken);
           getCartItemsAPI(encodedToken);
-          navigate("/products");
+          console.log(location);
+          navigate(location?.state?.from?.pathname);
         } else {
           setFormValues((formValues) => ({
             ...formValues,
@@ -152,9 +155,9 @@ const Login = () => {
   };
 
   // Redirect to userdetails if logged in
-  if (isloggedIn) {
-    return <Navigate to="/userdetails" replace />;
-  }
+  // if (isloggedIn) {
+  //   return <Navigate to={location?.state?.from?.pathname} />;
+  // }
 
   return (
     <>

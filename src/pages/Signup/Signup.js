@@ -229,7 +229,7 @@ const Signup = () => {
   };
 
   if (isloggedIn) {
-    return <Navigate to="/userdetails" replace />;
+    return <Navigate to="/products" />;
   }
   return (
     <>

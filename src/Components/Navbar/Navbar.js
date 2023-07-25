@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import FavoriteIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -12,9 +12,10 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   const navigate = useNavigate();
   const { AppDevice } = useContext(DataContext);
-  const { wishList } = useContext(WishListContext);
-  const { cart } = useContext(CartContext);
+  const { wishList, setWishList } = useContext(WishListContext);
+  const { cart, setCart } = useContext(CartContext);
   const { isloggedIn, setUserToken, setUser, setIsLoggedIn } = useContext(AuthContext);
+  const location = useLocation();
   return (
     <header>
       <nav className={styles.navBarWrapper}>
@@ -35,7 +36,7 @@ const Navbar = () => {
                   <AccountCircleOutlinedIcon className={styles.user} sx={{ stroke: "transparent", strokeWidth: 1 }} />
                 </Link>
               ) : (
-                <Link to="/login" className={styles.signIn}>
+                <Link to="/login" className={styles.signIn} state={{ from: location }}>
                   Sign In
                 </Link>
               )}
@@ -65,7 +66,9 @@ const Navbar = () => {
                     setUserToken("");
                     setUser({});
                     setIsLoggedIn(false);
-                    navigate("/login");
+                    setWishList([]);
+                    setCart([]);
+                    navigate("/login", { state: { from: location } });
                   }}
                   className={styles.logout}
                 >
