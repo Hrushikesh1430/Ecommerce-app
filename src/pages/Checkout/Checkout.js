@@ -8,7 +8,7 @@ import { validate } from "uuid";
 import Footer from "../Home/Footer/Footer";
 import { CustomModal } from "../../Components/CustomModal/CustomModal";
 import { AddressForm } from "../../Components/AddressForm/AddressForm";
-import { alertTitleClasses } from "@mui/material";
+import { toast } from "react-toastify";
 
 export const Checkout = () => {
   const { user } = useContext(AuthContext);
@@ -27,11 +27,35 @@ export const Checkout = () => {
   const validateCheckout = () => {
     const addresses = address.filter((item, index) => item.userId === user.id);
     if (currentAddress === "" && addresses.length === 0) {
-      alert("Please add an address to checkout");
+      toast.error("Please add an address to checkout", {
+        position: "bottom-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } else if (currentAddress === "" && addresses.length > 0) {
-      alert("Please select an address to checkout");
+      toast.error("Please select an address to checkout", {
+        position: "bottom-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     } else {
-      alert("Proceed to payment");
+      toast.success("You can successfully proceed to payment", {
+        position: "bottom-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
     }
   };
   if (!cart.length > 0) {

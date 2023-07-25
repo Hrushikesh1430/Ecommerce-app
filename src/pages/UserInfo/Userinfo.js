@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { AddressForm } from "../../Components/AddressForm/AddressForm";
 import { CustomModal } from "../../Components/CustomModal/CustomModal";
 import Footer from "../Home/Footer/Footer";
+import { toast } from "react-toastify";
 
 export const Userdetails = () => {
   const { user } = useContext(AuthContext);
@@ -74,7 +75,22 @@ export const Userdetails = () => {
                           >
                             Edit
                           </button>
-                          <button onClick={() => deleteAddressHandler(item)}>Delete</button>
+                          <button
+                            onClick={() => {
+                              toast.warning("Address deleted", {
+                                position: "bottom-right",
+                                autoClose: 1500,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                theme: "light",
+                              });
+                              deleteAddressHandler(item);
+                            }}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </div>
