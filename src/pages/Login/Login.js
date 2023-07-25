@@ -155,9 +155,9 @@ const Login = () => {
   };
 
   // Redirect to userdetails if logged in
-  // if (isloggedIn) {
-  //   return <Navigate to={location?.state?.from?.pathname} />;
-  // }
+  if (isloggedIn) {
+    return <Navigate to="/userdetails" replace />;
+  }
 
   return (
     <>
