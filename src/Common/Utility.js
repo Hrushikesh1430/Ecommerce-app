@@ -9,5 +9,9 @@ const HideLoader = () => {
     document.querySelector("html").style.overflow = "";
   }
 };
+const showLoader = () => {
+  document.querySelector("html").style.overflow = "hidden";
+  document.querySelector(".loaderBackground").style.display = "flex";
+};
 
-export { regexCheck, HideLoader };
+export { regexCheck, HideLoader, showLoader };
