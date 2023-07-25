@@ -3,8 +3,8 @@ import styles from "./userDetails.module.css";
 import { AuthContext, DataContext } from "../..";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { AddressForm } from "../../Components/AddressForm";
-import { CustomModal } from "../../Components/CustomModal";
+import { AddressForm } from "../../Components/AddressForm/AddressForm";
+import { CustomModal } from "../../Components/CustomModal/CustomModal";
 import Footer from "../Home/Footer/Footer";
 
 export const Userdetails = () => {

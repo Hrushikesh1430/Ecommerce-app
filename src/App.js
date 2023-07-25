@@ -12,7 +12,7 @@ import { Userdetails } from "./pages/UserInfo/Userinfo";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Context/AuthContext";
-import { ProtectedRoutes } from "./Components/ProtectedRoutes";
+import { ProtectedRoutes } from "./Components/ProtectedRoutes/ProtectedRoutes";
 import { DataContext } from ".";
 import { Product } from "./pages/Product/Product";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";

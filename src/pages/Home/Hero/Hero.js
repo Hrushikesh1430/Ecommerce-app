@@ -60,7 +60,7 @@ const Hero = () => {
                     <span className={styles.subText}>SALE UPTO</span>
                     <span className={styles.saleDiscount}>60% OFF</span>
                   </div>
-                  <button className={styles.shop}>
+                  <button className={styles.shop} onClick={() => navigate("/products")}>
                     SHOP NOW <LocalMallOutlinedIcon />
                   </button>
                 </div>

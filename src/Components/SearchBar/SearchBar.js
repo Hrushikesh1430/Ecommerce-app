@@ -45,7 +45,14 @@ export const SearchBar = () => {
             <div className={styles.SearchBox}>
               {state.searchList.length > 0 ? (
                 state.searchList.map((item) => (
-                  <div className={styles.searchItem} onClick={() => navigate(`/product/${item._id}`)}>
+                  <div
+                    className={styles.searchItem}
+                    onClick={() => {
+                      setSearcbBoxVisible(false);
+                      navigate(`/product/${item._id}`);
+                      setSearchInput("");
+                    }}
+                  >
                     <img src={item.image} alt="searchImage" className={styles.searchImage} />
                     <div className={styles.searchInfo}>
                       <span className={styles.brand}>{item.brand}</span>

@@ -1,8 +1,10 @@
 import styles from "./address.module.css";
-import { AuthContext, DataContext } from "..";
+import { AuthContext, DataContext } from "../..";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { v4 as uuid } from "uuid";
+
+import { toast } from "react-toastify";
 
 export const AddressForm = (props) => {
   console.log(props.edit);
@@ -281,6 +283,15 @@ export const AddressForm = (props) => {
       props.edit
         ? setAddress((address) => address.map((item) => (item.id === props.addressValue.id ? data : item)))
         : setAddress((address) => [...address, data]);
+      toast.success(`${props.edit ? "Address Edited" : "Address added to the directory"}`, {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
       props.setAddressModal(false);
     }
   };

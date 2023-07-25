@@ -8,6 +8,8 @@ import { AuthContext, CartContext, DataContext, WishListContext } from "../..";
 import { SearchBar } from "../SearchBar/SearchBar";
 import PcLogo from "../../assets/Navbar/logo.png";
 
+import { toast } from "react-toastify";
+
 import styles from "./Navbar.module.css";
 const Navbar = () => {
   const navigate = useNavigate();
@@ -68,6 +70,15 @@ const Navbar = () => {
                     setIsLoggedIn(false);
                     setWishList([]);
                     setCart([]);
+                    toast.success(`Logged out successfully`, {
+                      position: "bottom-right",
+                      autoClose: 1000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      theme: "light",
+                    });
                     navigate("/login", { state: { from: location } });
                   }}
                   className={styles.logout}

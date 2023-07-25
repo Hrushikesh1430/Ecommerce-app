@@ -176,9 +176,9 @@ const Login = () => {
   };
 
   // Redirect to userdetails if logged in
-  // if (isloggedIn) {
-  //   return <Navigate to="/userdetails" replace />;
-  // }
+  if (isloggedIn) {
+    return <Navigate to="/userdetails" replace />;
+  }
 
   return (
     <>

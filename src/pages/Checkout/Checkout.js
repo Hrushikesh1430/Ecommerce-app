@@ -6,8 +6,8 @@ import { AuthContext, CartContext, DataContext } from "../..";
 import { useContext, useEffect, useState } from "react";
 import { validate } from "uuid";
 import Footer from "../Home/Footer/Footer";
-import { CustomModal } from "../../Components/CustomModal";
-import { AddressForm } from "../../Components/AddressForm";
+import { CustomModal } from "../../Components/CustomModal/CustomModal";
+import { AddressForm } from "../../Components/AddressForm/AddressForm";
 import { alertTitleClasses } from "@mui/material";
 
 export const Checkout = () => {
