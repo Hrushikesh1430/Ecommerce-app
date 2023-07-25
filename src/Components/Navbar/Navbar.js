@@ -22,7 +22,7 @@ const Navbar = () => {
     <header>
       <nav className={styles.navBarWrapper}>
         <div className={styles.brand}>
-          <img src={PcLogo} alt="logo" onClick={() => navigate("/products")} />
+          <img src={PcLogo} alt="logo" onClick={() => navigate("/")} />
         </div>
         {AppDevice === 1 && <SearchBar />}
         <div className={styles.navItems}>
@@ -32,6 +32,11 @@ const Navbar = () => {
               <Link to="/signup">Signup</Link>
             </li> */}
           <ul>
+            <li>
+              <Link to="/products" className={styles.signIn}>
+                Explore
+              </Link>
+            </li>
             <li>
               {isloggedIn ? (
                 <Link to="/userdetails">
