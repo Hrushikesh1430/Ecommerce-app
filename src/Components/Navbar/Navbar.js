@@ -32,11 +32,14 @@ const Navbar = () => {
               <Link to="/signup">Signup</Link>
             </li> */}
           <ul>
-            <li>
-              <Link to="/products" className={styles.signIn}>
-                Explore
-              </Link>
-            </li>
+            {AppDevice === 1 && (
+              <li>
+                <Link to="/products" className={styles.signIn}>
+                  Explore
+                </Link>
+              </li>
+            )}
+
             <li>
               {isloggedIn ? (
                 <Link to="/userdetails">
