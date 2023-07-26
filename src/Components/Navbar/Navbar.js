@@ -26,11 +26,6 @@ const Navbar = () => {
         </div>
         {AppDevice === 1 && <SearchBar />}
         <div className={styles.navItems}>
-          {/* <Link to="/">Home</Link> */}
-          {/* <Link to="/products">Products</Link> */}
-          {/* <li>
-              <Link to="/signup">Signup</Link>
-            </li> */}
           <ul>
             {AppDevice === 1 && (
               <li>

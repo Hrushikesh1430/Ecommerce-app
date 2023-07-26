@@ -394,6 +394,9 @@
   }
   .showFilter {
     display: block;
+    font-size: 0.8rem;
+    line-height: normal;
+    padding: 7px 9px;
   }
   .categories,
   .sizes,
