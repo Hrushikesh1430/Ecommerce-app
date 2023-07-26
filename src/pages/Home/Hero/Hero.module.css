@@ -79,6 +79,10 @@
   gap: 20px;
   font-weight: 500;
 }
+.shop:hover {
+  color: #ffffff;
+  background: #3c3c3c;
+}
 .heroRight {
   padding-left: 6%;
   padding-top: 30px;
