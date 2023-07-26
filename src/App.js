@@ -42,6 +42,14 @@ function App() {
     checkLogin();
     getProductsAPI();
 
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        // set up arrow to true
+      } else {
+        // set up arrow to false
+      }
+    });
+
     function handleResize() {
       if (window.innerWidth >= 1024) {
         setAppDevice(1);

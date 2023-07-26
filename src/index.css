@@ -17,3 +17,18 @@ code {
 button:focus {
   -webkit-tap-highlight-color: transparent;
 }
+body::-webkit-scrollbar {
+  width: 8px;
+  background: #ffffff;
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(-155deg, #fd3d6b 0%, #fd7863 98%, #f3dfe0 100%);
+  -webkit-border-radius: 100px;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0, 75);
+  height: 10px;
+}
+
+body::-webkit-scrollbar-corner {
+  background: #000;
+  height: 5px;
+}
