@@ -401,6 +401,7 @@ export const AddressForm = (props) => {
                 <option value="Select your city">Select your city</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Pune">Pune</option>
+                <option value="Thane">Thane</option>
               </select>
               {formValues.city.error !== "" && <span className={styles.warning}>{formValues.city.error}</span>}
             </div>
