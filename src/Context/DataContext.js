@@ -21,6 +21,17 @@ export const DataContextProvider = ({ children }) => {
     {
       id: uuid(),
       userId: "2",
+      name: "Madhavi Tawde",
+      phone: "9969535222",
+      residence: "47/1430 Vishwadham Co-op Housing Society",
+      area: "Nehru Nagar Kurla East",
+      city: "Mumbai",
+      state: "Maharashtra",
+      pincode: "400024",
+    },
+    {
+      id: uuid(),
+      userId: "2",
       name: "Deepak Tawde",
       phone: "9865871681",
       residence: "47/1430 Vishwadham Co-op Housing Society",
@@ -50,6 +61,17 @@ export const DataContextProvider = ({ children }) => {
       city: "Mumbai",
       state: "Maharashtra",
       pincode: "400024",
+    },
+    {
+      id: uuid(),
+      userId: "3",
+      name: "Subha Sasmal",
+      phone: "9876276762",
+      residence: "704 A wing Savoy Apartment",
+      area: "MIDC Colony Raheja Gardens",
+      city: "Thane",
+      state: "Maharashtra",
+      pincode: "400080",
     },
   ]);
   const [state, dispatch] = useReducer(FilterReducer, InitialState);
