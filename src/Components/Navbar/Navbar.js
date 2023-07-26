@@ -1,8 +1,8 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import FavoriteIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import AccountCircleIcon from "@mui/icons-material/AccountCircleOutlined";
 
 import { AuthContext, CartContext, DataContext, WishListContext } from "../..";
 import { SearchBar } from "../SearchBar/SearchBar";
@@ -38,7 +38,7 @@ const Navbar = () => {
             <li>
               {isloggedIn ? (
                 <Link to="/userdetails">
-                  <AccountCircleOutlinedIcon className={styles.user} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                  <AccountCircleIcon className={styles.user} sx={{ stroke: "#000000", strokeWidth: 0 }} />
                 </Link>
               ) : (
                 <Link to="/login" className={styles.signIn} state={{ from: location }}>
@@ -49,7 +49,7 @@ const Navbar = () => {
             <li>
               <Link to="/wishlist">
                 <div className={styles.iconWrapper}>
-                  <FavoriteIcon className={styles.heart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                  <FavoriteIcon className={styles.heart} sx={{ stroke: "#000000", strokeWidth: 1.5 }} />
                   {wishList.length > 0 && <div className={styles.quantity}>{wishList.length}</div>}
                 </div>
               </Link>
@@ -57,7 +57,7 @@ const Navbar = () => {
             <li>
               <Link to="/cart">
                 <div className={styles.iconWrapper}>
-                  <ShoppingCartOutlinedIcon className={styles.cart} sx={{ stroke: "transparent", strokeWidth: 1 }} />
+                  <ShoppingCartIcon className={styles.cart} sx={{ stroke: "#000000", strokeWidth: 0 }} />
                   {cart.length > 0 && <div className={styles.quantity}>{cart.length}</div>}
                 </div>
               </Link>

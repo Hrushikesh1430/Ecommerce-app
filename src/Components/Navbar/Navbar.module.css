@@ -35,18 +35,22 @@ header {
   color: var(--primary-color);
   text-decoration: none;
 }
-
-.navItems .heart,
 .navItems .cart,
 .navItems .user {
   height: 1.7rem;
   width: 1.7rem;
   color: #000000;
 }
-.navItems .heart:hover,
+/* .navItems .heart:hover,
 .navItems .cart :hover {
   color: var(--primary-color);
+} */
+.navItems .heart {
+  height: 1.7rem;
+  width: 1.7rem;
+  color: #fff;
 }
+
 .brand {
   cursor: pointer;
 }
@@ -93,7 +97,6 @@ header {
   .navItems .user {
     height: 1em;
     width: 1em;
-    color: #000000;
   }
   .navItems ul {
     display: flex;
