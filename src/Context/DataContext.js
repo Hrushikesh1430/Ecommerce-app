@@ -73,6 +73,17 @@ export const DataContextProvider = ({ children }) => {
       state: "Maharashtra",
       pincode: "400080",
     },
+    {
+      id: uuid(),
+      userId: "4",
+      name: "Parth Patel",
+      phone: "9167665349",
+      residence: "403/67, Rahul CHS",
+      area: "Lallubhai Compound, Mankhurd(West)",
+      city: "Mumbai",
+      state: "Maharashtra",
+      pincode: "400043",
+    },
   ]);
   const [state, dispatch] = useReducer(FilterReducer, InitialState);
   const [checkoutTotal, setcheckOutTotal] = useState(0);

@@ -156,7 +156,7 @@ const Login = () => {
             ...formValues,
             password: {
               ...formValues.password,
-              error: errors[0],
+              error: "Credentials not valid. Please try again",
             },
           }));
           toast.error(`These credentials do not match our records. Please try again`, {
