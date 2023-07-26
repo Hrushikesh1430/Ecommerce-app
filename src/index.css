@@ -32,3 +32,6 @@ body::-webkit-scrollbar-corner {
   background: #000;
   height: 5px;
 }
+body {
+  -webkit-tap-highlight-color: transparent; /* remove tap highlight */
+}
