@@ -384,8 +384,8 @@
     align-items: center;
     margin-bottom: 30px;
     position: sticky;
-    z-index: 1200;
-    top: 135px;
+    z-index: 200;
+    top: 130px;
     background-color: #fff;
     margin-top: 0;
     margin-left: -5%;
