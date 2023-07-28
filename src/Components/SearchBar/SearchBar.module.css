@@ -84,6 +84,21 @@
   padding: 10px;
   text-align: center;
 }
+.SearchBox::-webkit-scrollbar {
+  width: 4px;
+  background: #ffffff;
+}
+.SearchBox::-webkit-scrollbar-thumb {
+  background: linear-gradient(-155deg, #fd3d6b 0%, #fd7863 98%, #f3dfe0 100%);
+  -webkit-border-radius: 100px;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0, 75);
+  height: 10px;
+}
+
+.SearchBox::-webkit-scrollbar-corner {
+  background: #000;
+  height: 5px;
+}
 
 @media only screen and (max-width: 1024px) {
   .searchWrapper {
