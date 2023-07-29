@@ -33,7 +33,7 @@
 }
 
 .SearchBox {
-  width: 450px;
+  width: 100%;
   position: absolute;
   left: 0px;
   z-index: 1000;
@@ -49,13 +49,13 @@
   position: relative;
 }
 .searchItem {
-  padding: 10px;
   border-bottom: 1px solid hsla(216, 3%, 66%, 0.22);
   display: flex;
   align-items: center;
-  gap: 20px;
   font-weight: bold;
   cursor: pointer;
+  padding: 10px 20px;
+  gap: 5px;
 }
 .brand {
   color: #878787;
@@ -98,6 +98,11 @@
 .SearchBox::-webkit-scrollbar-corner {
   background: #000;
   height: 5px;
+}
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+  .searchWrapper {
+    width: 350px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
