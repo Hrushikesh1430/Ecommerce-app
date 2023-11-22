@@ -388,8 +388,8 @@ const Products = () => {
                       disabled={wishButtonId === item._id ? wishButtonDisabled : false}
                     >
                       <FavoriteIcon
-                        className={`${styles.heartIcon} ${wishList.find((wishListItem) => wishListItem._id === item._id) && styles.fill}`}
-                        sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#000000", strokeWidth: 1 }}
+                        className={`${styles.heartIcon}`}
+                        sx={{ stroke: wishList.find((wishListItem) => wishListItem._id === item._id) ? "transparent" : "#ffffff", strokeWidth: 1 }}
                       />
                     </button>
                   </div>

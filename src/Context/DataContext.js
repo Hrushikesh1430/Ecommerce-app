@@ -64,17 +64,6 @@ export const DataContextProvider = ({ children }) => {
     },
     {
       id: uuid(),
-      userId: "3",
-      name: "Subha Sasmal",
-      phone: "9876276762",
-      residence: "704 A wing Savoy Apartment",
-      area: "MIDC Colony Raheja Gardens",
-      city: "Thane",
-      state: "Maharashtra",
-      pincode: "400080",
-    },
-    {
-      id: uuid(),
       userId: "4",
       name: "Parth Patel",
       phone: "9167665349",
